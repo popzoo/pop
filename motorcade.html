@@ -115,9 +115,7 @@
         }).then(res => {
             return res.json();
         }).then(result => {
-            // var fleetList = JSON.parse(result);
             fleetList = result;
-            // console.info(fleetList);
             $("#device").gridalicious('append', makeboxes());
         }).catch(err => {
             console.error('请求错误', err);
@@ -155,13 +153,55 @@
         return undefined;
     }
 
+        //=========================滚动到底部=============================
+    function getScrollTop(){
+    　　var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
+    　　if(document.body){
+    　　　　bodyScrollTop = document.body.scrollTop;
+    　　}
+    　　if(document.documentElement){
+    　　　　documentScrollTop = document.documentElement.scrollTop;
+    　　}
+    　　scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+    　　return scrollTop;
+    }
+    //文档的总高度
+    function getScrollHeight(){
+    　　var scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
+    　　if(document.body){
+    　　　　bodyScrollHeight = document.body.scrollHeight;
+    　　}
+    　　if(document.documentElement){
+    　　　　documentScrollHeight = document.documentElement.scrollHeight;
+    　　}
+    　　scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+    　　return scrollHeight;
+    }
+    //浏览器视口的高度
+    function getWindowHeight(){
+    　　var windowHeight = 0;
+    　　if(document.compatMode == "CSS1Compat"){
+    　　　　windowHeight = document.documentElement.clientHeight;
+    　　}else{
+    　　　　windowHeight = document.body.clientHeight;
+    　　}
+    　　return windowHeight;
+    }
+    // 滚动事件监视
+    window.onscroll = function(){
+    　　if(getScrollTop() + getWindowHeight() == getScrollHeight()){
+           $("#device").gridalicious('append', makeboxes());
+           console.info("触发加载...");
+    　　}
+    };
+
 		//滚动条事件
 		$(document).ready(function () {         
-			$(window).scroll(function () {
-				if(($(window).scrollTop() + $(window).height()) == $(document).height()){//&& makeboxes()!=undefined 
-					$("#device").gridalicious('append', makeboxes());//=========================error:length undefined
-				}
-		  });
+			// $(window).scroll(function () {
+			// 	if(($(window).scrollTop() + $(window).height()) == $(document).height()){//&& makeboxes()!=undefined 
+			// 		$("#device").gridalicious('append', makeboxes());//=========================error:length undefined
+			// 	}
+		 //  });
 		//主要部分
       $("#device").gridalicious({
           gutter: 20,//缝隙宽度
@@ -169,10 +209,10 @@
           animate: true,//启用动画
           animationOptions: {
               speed: 100,
-              duration: 200,
+              duration: 400,
               queue: false,//同步显示
               complete:function(data){
-                // console.info("加载图片动画设置成功选项");
+                // console.info("加载成功");
               }
           },
       });
