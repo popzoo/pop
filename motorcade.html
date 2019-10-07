@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Lwolf" name="author">
+<title>斗鱼车队展</title>
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/wolf-scream/gift_effect/master/favicon.ico"> 
+<meta content="车队,斗鱼车队,车队大全,车队集合" name="Keywords">
+<link rel="stylesheet" href="css/new_page.css">
+<style type="text/css">
+        .radio{
+            display: inline-block;
+            position: relative;
+            line-height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .radio input{
+            display: none;
+        }
+        .radio .radio-bg{
+            display: inline-block;
+            height: 18px;
+            width: 18px;
+            margin-right: 5px;
+            padding:;
+            background-color: #45bcb8;
+            border-radius: 100%;
+            vertical-align: top;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1) inset, 0 1px 4px rgba(0, 0, 0, 0.1) inset, 1px -1px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .radio .radio-on{
+            display: true;
+        }
+        .radio input:checked + span.radio-on{
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 100%;
+            background: #FFFFFF;
+            top: 4px;
+            left: 4px;
+            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.3), 0 0 1px rgba(255, 255, 255, 0.4) inset;
+            background-image: linear-gradient(#ffffff 0, #e7e7e7 100%);
+            transform: scale(0, 0);
+            transition: all 0.2s ease;
+            transform: scale(1, 1);
+            display: inline-block;
+        }
+        dfn {
+          padding: 0 0.4em;
+          cursor: help;
+          font-style: normal;
+          position: relative;
+        }
+        dfn::after {
+          content: attr(data-info);
+          display: inline;
+          white-space: pre-wrap;
+          z-index: 999;
+          border-radius: 4px;
+          position: absolute;
+          top: 22px; left: 0;
+          opacity: 0;
+          width: 500px; /*背景宽度*/
+          font-size: 13px;
+          font-weight: 300;
+          line-height: 1.5em;
+          padding: 0.5em 0.8em;
+          background: rgba(0,0,0,0.8);
+          color: #fff;
+          pointer-events: none;
+          transition: opacity 150ms, top 150ms;
+        }
+        dfn::before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 12px; left: 20px;
+          opacity: 0;
+          width: 0; height: 0;
+          border: solid transparent 5px;
+          border-bottom-color: rgba(0,0,0,0.8);
+          transition: opacity 150ms, top 150ms;
+        }
+        dfn:hover {z-index: 100;}
+        dfn:hover::after,
+        dfn:hover::before {opacity: 1;}
+        dfn:hover::after {top: 30px;}
+        dfn:hover::before {top: 20px;}
+</style>
+</head>
+<body>
+     <a href="https://github.com/popzoo/barrage" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+    <a href="https://github.com/wolf-scream/gift_effect" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> 
+<div style=" height:30px; color:#3C3C3C; line-height:30px; margin:20px 0 -30px 0; padding:0 0 0 0;text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
+        <span class="collapse" style="float: left;white-space: nowrap; margin-left: 55px; font-size: 20px;color:#4D4D4D;">
+          <dfn data-info="这是筛选加入斗鱼车队条件的web，由于斗鱼官方车队搜索反穷人设计理念，以至于大家找个限制门槛低点的车队要鼠标来回点个几百次才能找到，只好自动动手丰衣足食，以方便大家进车队周转丸子或抢红包（注：现在抢丸子机器人太多，周转先试水哦）。这里没加粉丝牌筛选，因为斗鱼对消费水友服务还好。由于没有自主服务器抓数据，所以博主不定时手动更新车队数据，大家可以点击图片进斗鱼查看入队审批是否一致！">
+        加入条件:
+        <label for="no_limit" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_fire" id="no_limit"  value="no_limit" checked="checked"/>不限
+            <span class="radio-on"></span>
+        </label>
+        <label for="level_limit" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_fire" id="level_limit"  value="level_limit" />等级
+            <span class="radio-on"></span>
+        </label>
+        <label for="noble_limit" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_fire" id="noble_limit"  value="noble_limit" />贵族
+            <span class="radio-on"></span>
+        </label>
+<!--         <label for="fans_limit" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_fire" id="fans_limit"  value="fans_limit" />粉丝
+            <span class="radio-on"></span>
+        </label> -->
+        </dfn>
+        </span>
+    🚌斗鱼车队🚌
+    <span class="collapse" style="float: right;white-space: nowrap; margin-right: 40px; font-size: 20px;color:#4D4D4D;"> 
+        <a class="nav-link" style="text-decoration:none;" href="https://popzoo.github.io/barrage/index.html">云弹幕</a> •
+        <a class="nav-link" style="text-decoration:none;" href="https://wolf-scream.github.io/gift_effect/index.html">礼物秀</a> •
+        <a class="nav-link" style="text-decoration:none;" href="https://wolf-scream.github.io/gift_effect/mortocade.html">车队展</a> •
+        <a class="nav-link" style="text-decoration:none;" href="https://greasyfork.org/zh-CN/scripts/389379">GreaseFork</a>&nbsp;&nbsp;&nbsp;
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </span>
+</div>
+<div class="content">
+  <div id="device" class="gridalicious">
+    <div class="galcolumn">
+<!--    <div class="item"><img src="images/1.jpg" alt="响应式瀑布流布局插件"/><p>JS代码网</p></div>  -->
+    </div>
+  </div>
+</div>
+    <!-- loading按钮自己通过样式调整 -->
+<footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:grey;margin:10px auto 30px;color:black;">
+    加载中...
+</footer>
+<!-- <script src="js/jquery-1.8.3.min.js"></script> -->
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="js/jquery.grid-a-licious.min.js"></script>
+<script src="js/spider-background.js"></script> <!-- 蛛网背景图 -->
+<script type="text/javascript">
+    var count = 0;
+    var fleetList = new Array();
+    // 按钮初始化
+    function radioEventListener(){
+      var radioObj = document.getElementById("no_limit");
+      if(radioObj!=undefined){
+          var anchor1 = document.getElementById("no_limit");
+          anchor1.addEventListener("change",(function(){radioFunc('no_limit');}));
+          var anchor2 = document.getElementById("level_limit");
+          anchor2.addEventListener("change",(function(){radioFunc('level_limit');}));
+          var anchor3 = document.getElementById("noble_limit");
+          anchor3.addEventListener("change",(function(){radioFunc('noble_limit');}));
+      }else{
+          console.error("无法获取radio元素");
+      }
+    }
+
+    // 监听radio的onchange事件
+    function radioFunc(msg){
+        if(msg == "no_limit"){//停火
+            sessionStorage.setItem("radioStatus",msg);
+            location.reload();
+            console.log("⛔停止开火");
+        }else if(msg =="level_limit"){//开火
+            sessionStorage.setItem("radioStatus",msg);
+            location.reload();
+            openFireStatus();
+        }else if(msg =="noble_limit"){//轰炸
+            sessionStorage.setItem("radioStatus",msg);
+            location.reload();
+        }
+    }
+
+    //=========================图片加载=============================  
+    window.onload = function fetchGet(){
+        var radioObj = sessionStorage.getItem("radioStatus")!=null ? sessionStorage.getItem("radioStatus") : "no_limit";
+        var radioNode = document.getElementById(radioObj);
+        radioNode.setAttribute("checked","checked");
+        radioEventListener();//监听radio;
+        var urlTail = "fleet_type_1.json";//默认
+        if(radioObj == "level_limit"){
+            urlTail = "fleet_type_2.json";
+        }else if(radioObj == "noble_limit"){
+            urlTail = "fleet_type_3.json";
+        }
+        fetch('https://raw.githubusercontent.com/popzoo/gift-show/master/json/'+urlTail,{
+            method: 'GET',
+            mode: 'cors', //请求模式为跨域
+            cache: 'default', //no-cache
+            credentials: 'omit', // 同源则加入凭据头,omit,include
+        }).then(res => {
+            return res.json();
+        }).then(result => {
+            // var fleetList = JSON.parse(result);
+            fleetList = result;
+            // console.info(fleetList);
+            $("#device").gridalicious('append', makeboxes());
+        }).catch(err => {
+            console.error('请求错误', err);
+        })
+    }
+
+		//模拟滚动条滚动时随机添加内容
+      function makeboxes(){
+        var boxes = new Array;
+        if(count*50<fleetList.length){
+            for(let i=count*50;i<Math.min((count+1)*50, fleetList.length);i++){
+                // console.info(fleetList[i]); encodeURIComponent(fleetList[i].mcId)
+                let div = $('<div></div>').addClass('item');
+                var content = "<a href='https://msg.douyu.com/motorcade/#/motorcade/search?keyword="+fleetList[i].number+"' target='_blank'><img src='"+fleetList[i].icon+"'/></a>";
+                content += "<p>车名:<strong style='color:red;'>"+fleetList[i].name+"</strong>&nbsp;人数:<strong style='color:red;'>";
+                content += fleetList[i].memberCount+"</strong>&nbsp;车标:<strong style='color:red;'>"+fleetList[i].flag+"</strong></p>";
+                content += "<p>车号:<strong style='color:red;'>"+fleetList[i].number+"</strong>&nbsp;始创:<strong style='color:red;'>";
+                content += (new Date(1000*fleetList[i].created_at)).toLocaleDateString() +"</strong>";
+                if(sessionStorage.getItem("radioStatus")=="level_limit"){
+                  content +="&nbsp;限制:<strong style='color:red;'>Lv."+ fleetList[i].applyJoinOption.level +"</strong></p>";
+                }else if(sessionStorage.getItem("radioStatus")=="noble_limit"){
+                  let nobleName = fleetList[i].applyJoinOption.desc;
+                  nobleName = nobleName.substring(nobleName.length-2);
+                  content +="&nbsp;限制:<strong style='color:red;'>"+ nobleName +"</strong></p>";
+                }
+                div.append(content);
+                boxes.push(div);
+            }
+            count++;
+            // console.info("礼物数："+fleetList.length);
+            return boxes;
+        }else{
+            $('#loading').text('加载完毕，此页车队总数:'+fleetList.length);
+        }
+        return undefined;
+    }
+
+		//滚动条事件
+		$(document).ready(function () {         
+			$(window).scroll(function () {
+				if(($(window).scrollTop() + $(window).height()) == $(document).height()){//&& makeboxes()!=undefined 
+					$("#device").gridalicious('append', makeboxes());//=========================error:length undefined
+				}
+		  });
+		//主要部分
+      $("#device").gridalicious({
+          gutter: 20,//缝隙宽度
+          width: 300,//图片宽度
+          animate: true,//启用动画
+          animationOptions: {
+              speed: 100,
+              duration: 200,
+              queue: false,//同步显示
+              complete:function(data){}
+          },
+      });
+    });
+</script>
+</body>
+</html>
