@@ -41,11 +41,11 @@
         </dfn>
         </span>
     🎡斗鱼车队筛选🎡
-    <span class="collapse" style="float: right;white-space: nowrap; margin-right: 40px; font-size: 20px;color:#4D4D4D;"> 
+    <span class="collapse" style="float: right;white-space: nowrap; margin-right: 60px; font-size: 20px;color:#4D4D4D;"> 
         <a class="nav-link" style="text-decoration:none;" href="https://popzoo.github.io/barrage/index.html">云弹幕</a> •
         <a class="nav-link" style="text-decoration:none;" href="https://popzoo.github.io/pop/giftshow.html">礼物秀</a> •
         <a class="nav-link" style="text-decoration:none;" href="https://popzoo.github.io/pop/motorcade.html">车队展</a> •
-        <a class="nav-link" style="text-decoration:none;" href="https://greasyfork.org/zh-CN/scripts/389379">GreaseFork</a>&nbsp;&nbsp;&nbsp;
+        <a class="nav-link" style="text-decoration:none;" href="https://greasyfork.org/zh-CN/scripts/389379">GreaseFork</a>
     </span>
 </div>
 <div class="content">
@@ -70,8 +70,8 @@
     function radioEventListener(){
       var radioObj = document.getElementById("no_limit");
       if(radioObj!=undefined){
-          var anchor1 = document.getElementById("no_limit");
-          anchor1.addEventListener("change",(function(){radioFunc('no_limit');}));
+          // var anchor1 = document.getElementById("no_limit");
+          radioObj.addEventListener("change",(function(){radioFunc('no_limit');}));
           var anchor2 = document.getElementById("level_limit");
           anchor2.addEventListener("change",(function(){radioFunc('level_limit');}));
           var anchor3 = document.getElementById("noble_limit");
@@ -86,11 +86,9 @@
         if(msg == "no_limit"){//停火
             sessionStorage.setItem("radioStatus",msg);
             location.reload();
-            console.log("⛔停止开火");
         }else if(msg =="level_limit"){//开火
             sessionStorage.setItem("radioStatus",msg);
             location.reload();
-            openFireStatus();
         }else if(msg =="noble_limit"){//轰炸
             sessionStorage.setItem("radioStatus",msg);
             location.reload();
@@ -173,7 +171,9 @@
               speed: 100,
               duration: 200,
               queue: false,//同步显示
-              complete:function(data){}
+              complete:function(data){
+                // console.info("加载图片动画设置成功选项");
+              }
           },
       });
     });
