@@ -30,19 +30,22 @@
     </div>
   </div>
 </div>
+<div id="rocket-to-top">
+  <div style="opacity: 0; display: block;" class="level-2"></div>
+  <div class="level-3"></div>
+</div>
     <!-- loading按钮自己通过样式调整 -->
-<footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:grey;margin:10px auto 30px;color:black;">
+<footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:#BBBBBB;margin:10px auto 30px;color:black;">
     加载中...
 </footer>
 <!-- <script src="js/jquery-1.8.3.min.js"></script> -->
 <script src="https://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/jquery.grid-a-licious.min.js"></script>
 <script src="js/spider-background.js"></script> <!-- 蛛网背景图 -->
-
+<script src="js/rocket.js"></script>
 <script type="text/javascript">
       var count = 0;
       var giftList = new Array();
-
       //=========================图片加载=============================  
       window.onload = function fetchGet() {
           fetch('https://raw.githubusercontent.com/wolf-scream/gift_effect/master/gift_effect.json',{
@@ -66,14 +69,13 @@
               console.error('请求错误', err);
           })
       }
-
 			//模拟滚动条滚动时随机添加内容
         function makeboxes(){
           var boxes = new Array;   
           if(count*50<giftList.length){
               for(let i=count*50;i<Math.min((count+1)*50, giftList.length);i++){
                   // console.info(giftList[i]);
-                  let div = $('<div></div>').addClass('item'); 
+                  let div = $('<div></div>').addClass('item');
                   let content = "<img src='"+giftList[i].hdt+"'/><p>名称:<strong style='color:red;'>";
                   content += giftList[i].name+"</strong>&nbsp;编号ID:<strong style='color:red;'>"+giftList[i].id+"</strong></p>";
                   div.append(content);
@@ -87,12 +89,11 @@
           }
           return undefined;
       }
-
 			//滚动条事件
-			$(document).ready(function () {         
+			$(document).ready(function () {
 				$(window).scroll(function () {
 					if(($(window).scrollTop() + $(window).height()) >= $(document).height()-50){//&& makeboxes()!=undefined 
-						$("#device").gridalicious('append', makeboxes());//=========================error:length undefined
+						$("#device").gridalicious('append', makeboxes());
 					}
 			  });
 			//主要部分

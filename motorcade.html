@@ -55,14 +55,19 @@
     </div>
   </div>
 </div>
+<div id="rocket-to-top">
+  <div style="opacity: 0; display: block;" class="level-2"></div>
+  <div class="level-3"></div>
+</div>
     <!-- loading按钮自己通过样式调整 -->
-<footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:grey;margin:10px auto 30px;color:black;">
+<footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:#BBBBBB;margin:10px auto 30px;color:black;">
     加载中...
 </footer>
 <!-- <script src="js/jquery-1.8.3.min.js"></script> -->
 <script src="https://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/jquery.grid-a-licious.min.js"></script>
 <script src="js/spider-background.js"></script> 
+<script src="js/rocket.js"></script>
 <script type="text/javascript">
     var count = 0;
     var fleetList = new Array();
@@ -80,7 +85,6 @@
           console.error("无法获取radio元素");
       }
     }
-
     // 监听radio的onchange事件
     function radioFunc(msg){
         if(msg == "no_limit"){
@@ -94,7 +98,6 @@
             location.reload();
         }
     }
-
     //=========================图片加载=============================  
     window.onload = function fetchGet(){
         var radioObj = sessionStorage.getItem("radioStatus")!=null ? sessionStorage.getItem("radioStatus") : "no_limit";
@@ -121,7 +124,6 @@
             console.error('请求错误', err);
         })
     }
-
 		//滚动条滚动时添加内容
       function makeboxes(){
         var boxes = new Array;
@@ -155,7 +157,6 @@
         }
         return undefined;
     }
-
 		$(document).ready(function () {
       //滚动条事件
       $(window).scroll(function () {
