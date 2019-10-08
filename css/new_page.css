@@ -16,7 +16,8 @@ a:hover{color:#222;}
 p{padding:5px 0px;}
 /*仅用于此项目*/
 .content{padding:70px;width:80%;margin:0 auto;}
-.item{background:#bebebe;color:#333;border-radius:3px;padding:10px;word-break:break-all;word-wrap:break-word;white-space:pre;white-space:pre-wrap;}
+.item{background:rgba(153,153,153,0.5);color:#333;border-radius:3px;padding:10px;word-break:break-all;white-space:pre-wrap;}
+/*.item{background:#bebebe;color:#333;border-radius:3px;padding:10px;word-break:break-all;white-space:pre-wrap;}*/
 .item img{width:100%;height:auto;}
 .item p{text-align:center;margin-top:5px;}
 
@@ -34,3 +35,10 @@ dfn:hover::after,
 dfn:hover::before {opacity: 1;}
 dfn:hover::after {top: 30px;}
 dfn:hover::before {top: 20px;}
+
+*{list-style:none;border:0;}
+body{height:3000px;}
+#rocket-to-top div {left:0;margin:0;overflow:hidden;padding:0;position:absolute;top:0;width:149px;}
+#rocket-to-top .level-2 {background:url("images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;display:none;height:250px;opacity:0;z-index:1;}
+#rocket-to-top .level-3 {background:none repeat scroll 0 0 transparent;cursor:pointer;display:block;height:150px;z-index:2;}
+#rocket-to-top {background:url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;cursor:default;display:block;height:250px;margin:-125px 0 0;overflow:hidden;padding:0;position:fixed;right:0;top:80%;width:149px;z-index:11;}
