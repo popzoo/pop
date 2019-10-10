@@ -137,7 +137,7 @@
                 content += "<p>车号:<strong style='color:red;'>"+fleetList[i].number+"</strong>&nbsp;始创:<strong style='color:red;'>";
                 content += (new Date(1000*fleetList[i].created_at)).toLocaleDateString() +"</strong>";
                 var radioObj = sessionStorage.getItem("radioStatus");
-                if(radioObj=="no_limit"){
+                if(radioObj=="no_limit"||radioObj==null){
                   content +="&nbsp;限制:<strong style='color:red;'>无</strong></p>";
                 }else if(radioObj=="level_limit"){
                   content +="&nbsp;限制:<strong style='color:red;'>Lv."+ fleetList[i].applyJoinOption.level +"</strong></p>";
