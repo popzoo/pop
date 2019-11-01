@@ -114,12 +114,14 @@
                 num++;
                 loopfleetList();
             }else{
-                console.info("一条错误||++||车号CID["+cid+"]||++||"+json.message+"||++||状态码："+json.status_code);
+                console.info("异常数据-->车号CID["+cid+"]+++"+json.message+"+++状态码："+json.status_code);
                 num++;
                 loopfleetList();
             }
         }).catch(err => {
             console.error('请求错误', err);
+            num++;
+            loopfleetList();
         })
     }
 
