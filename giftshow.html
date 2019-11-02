@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta content="lvlanxing" name="author">
 <title>斗鱼礼物秀</title>
-<link rel="shortcut icon" href="https://rawcdn.githack.com/popzoo/pop/79682f53c37c8d228a76245291d9de41e3628a81/images/favicon.ico"> 
+<link rel="shortcut icon" href="https://rawcdn.githack.com/popzoo/pop/9d4121eed5cbb035e55203b8a9e56a73dcf2e6bf/images/favicon.ico"> 
 <meta content="礼物,斗鱼礼物,礼物大全,礼物集合" name="Keywords">
 <link rel="stylesheet" href="css/pop_page.css">
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
@@ -39,6 +39,7 @@
 <footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:#BBBBBB;margin:10px auto 30px;color:black;">
     加载中...
 </footer>
+<!-- <iframe id="iframe" src="https://webconf.douyucdn.cn/resource/common/gift/flash/gift_effect.json" style="display:none;"></iframe> -->
 <!-- <script src="js/jquery-1.8.3.min.js"></script> -->
 <script src="https://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/jquery.grid-a-licious.min.js"></script>
@@ -47,8 +48,37 @@
 <script type="text/javascript">
       var count = 0;
       var giftList = new Array();
-      //=========================图片加载=============================  
-      window.onload = function fetchGet() {
+      // =========================图片加载=============================  
+      window.onload = function fetchGet(){
+          $.ajax({
+              async : true,
+              url : "https://webconf.douyucdn.cn/resource/common/gift/flash/gift_effect.json",
+              type : "GET",
+              dataType : "jsonp", // 返回的数据类型，设置为JSONP方式
+              jsonp : 'callback', //指定一个查询参数名称来覆盖默认的 jsonp 回调参数名 callback
+              jsonpCallback: 'DYConfigCallback', //设置回调函数名
+              success: function(response, status, xhr){
+                  if(status == "success"){
+                      // console.info('状态为：' + status);
+                      let jsonData=response.data.flashConfig;
+                      for(let key in jsonData){
+                          if(jsonData[key].hdt!=""){
+                              giftList.push(jsonData[key]);
+                          }
+                      }
+                      $("#device").gridalicious('append', makeboxes());   
+                  }else{
+                      fetchGiftDat();//second plan
+                  }
+              }
+              // error: function(jqXHR, textStatus, errorThrown){
+              //     console.error("请求错误:"+textStatus);
+              //     fetchGiftDat();//second plan
+              // }
+          }); 
+      }
+      // second plan
+      function fetchGiftData() {
           // fetch('https://raw.githubusercontent.com/popzoo/pop/master/json/gift_effect.json',{
           fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/gift_effect.json',{
               method: 'GET',
@@ -59,18 +89,18 @@
               return res.text();
           }).then(result => {
               result = result.substring(17, result.length-2);
-                  var jsonData = JSON.parse(result);
-                  jsonData=jsonData.data.flashConfig;
-                  for(let key in jsonData){
-                      if(jsonData[key].hdt!=""){
-                          giftList.push(jsonData[key]);
-                      }
+              var jsonData = JSON.parse(result);
+              jsonData=jsonData.data.flashConfig;
+              for(let key in jsonData){
+                  if(jsonData[key].hdt!=""){
+                      giftList.push(jsonData[key]);
                   }
+              }
               $("#device").gridalicious('append', makeboxes());
           }).catch(err => {
               console.error('请求错误', err);
           })
-      }
+      }      
 			//模拟滚动条滚动时随机添加内容
         function makeboxes(){
           var boxes = new Array;   
