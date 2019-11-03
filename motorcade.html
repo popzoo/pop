@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta content="lvlanxing" name="author">
 <title>斗鱼车队展</title>
-<link rel="shortcut icon" href="https://rawcdn.githack.com/popzoo/pop/79682f53c37c8d228a76245291d9de41e3628a81/images/favicon.ico"> 
+<link rel="shortcut icon" href="https://rawcdn.githack.com/popzoo/pop/9d4121eed5cbb035e55203b8a9e56a73dcf2e6bf/images/favicon.ico"> 
 <meta content="车队,斗鱼车队,车队大全,车队集合,Pinterest瀑布流效果" name="Keywords">
 <link rel="stylesheet" href="css/pop_page.css">
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
@@ -16,11 +16,11 @@
     <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> 
 <div style=" height:30px; color:#3C3C3C; line-height:30px; margin:20px 0 -30px 0; padding:0 0 0 0;text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
         <span class="collapse" style="float: left;white-space: nowrap; margin-left: 50px; font-size: 20px;color:#4D4D4D;">
-          <dfn data-info="这是筛选加入斗鱼车队条件的web，由于斗鱼官方车队搜索反穷人设计理念，以至于大家找个限制门槛低点的车队要鼠标来回点个几百次才能找到，只好自动动手丰衣足食，以方便大家进车队周转丸子或抢红包（注：现在抢丸子机器人太多，周转先试水哦）。这里没加粉丝牌筛选，因为斗鱼对消费水友服务还好。由于没有自主服务器抓数据，所以博主不定时手动更新车队数据，大家可以点击图片进斗鱼查看入队审批是否一致！">
+        <dfn data-info="细化斗鱼加入车队搜索条件，由于斗鱼官方车队搜索反穷人设计理念，以至于大家找个门槛低的车队要点个几百次才找到，只好自己动手丰衣足食，大家进车队可领每日加油卡、周转丸子或抢红包（注：现在抢丸子机器人太多，周转先试水哦）。由于没服务器爬数据，博主不定时手动更新数据，大家可以点击图片进斗鱼查看入队审批是否一致！">
         加入条件:
         <label for="no_limit" class="radio">
             <span class="radio-bg"></span>
-            <input type="radio" name="radio_fire" id="no_limit"  value="no_limit" checked="checked"/>不限
+            <input type="radio" name="radio_fire" id="no_limit"  value="no_limit" />不限
             <span class="radio-on"></span>
         </label>
         <label for="level_limit" class="radio">
@@ -33,11 +33,11 @@
             <input type="radio" name="radio_fire" id="noble_limit"  value="noble_limit" />贵族
             <span class="radio-on"></span>
         </label>
-<!--         <label for="fans_limit" class="radio">
+        <label for="fans_limit" class="radio">
             <span class="radio-bg"></span>
             <input type="radio" name="radio_fire" id="fans_limit"  value="fans_limit" />粉丝
             <span class="radio-on"></span>
-        </label> -->
+        </label>
         </dfn>
         </span>
     🎡斗鱼车队筛选🎡
@@ -74,17 +74,19 @@
     var fleetList = new Array();
     // 按钮初始化
     function radioEventListener(){
-      var radioObj = document.getElementById("no_limit");
-      if(radioObj!=undefined){
-          // var anchor1 = document.getElementById("no_limit");
-          radioObj.addEventListener("change",(function(){radioFunc('no_limit');}));
-          var anchor2 = document.getElementById("level_limit");
-          anchor2.addEventListener("change",(function(){radioFunc('level_limit');}));
-          var anchor3 = document.getElementById("noble_limit");
-          anchor3.addEventListener("change",(function(){radioFunc('noble_limit');}));
-      }else{
-          console.error("无法获取radio元素");
-      }
+        var radioObj = document.getElementById("no_limit");
+        if(radioObj!=undefined){
+            // var anchor1 = document.getElementById("no_limit");
+            radioObj.addEventListener("change",(function(){radioFunc('no_limit');}));
+            var anchor2 = document.getElementById("level_limit");
+            anchor2.addEventListener("change",(function(){radioFunc('level_limit');}));
+            var anchor3 = document.getElementById("noble_limit");
+            anchor3.addEventListener("change",(function(){radioFunc('noble_limit');}));
+            var anchor4 = document.getElementById("fans_limit");
+            anchor4.addEventListener("change",(function(){radioFunc('fans_limit');}));
+        }else{
+            console.error("无法获取radio元素");
+        }
     }
     // 监听radio的onchange事件
     function radioFunc(msg){
@@ -97,12 +99,16 @@
         }else if(msg =="noble_limit"){
             sessionStorage.setItem("radioStatus",msg);
             location.reload();
+        }else if(msg =="fans_limit"){
+            sessionStorage.setItem("radioStatus",msg);
+            location.reload();
         }
     }
     //=========================图片加载=============================  
     window.onload = function fetchGet(){
         var radioObj = sessionStorage.getItem("radioStatus")!=null ? sessionStorage.getItem("radioStatus") : "no_limit";
         var radioNode = document.getElementById(radioObj);
+        // console.info(radioObj)
         radioNode.setAttribute("checked","checked");
         radioEventListener();//监听radio;
         var urlTail = "fleet_type_1.json";//默认
@@ -110,6 +116,8 @@
             urlTail = "fleet_type_2.json";
         }else if(radioObj == "noble_limit"){
             urlTail = "fleet_type_3.json";
+        }else if(radioObj == "fans_limit"){
+            urlTail = "fleet_type_5.json";
         }
         // fetch('https://raw.githubusercontent.com/popzoo/gift-show/master/json/'+urlTail,{
         fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/'+urlTail,{
@@ -121,6 +129,7 @@
             return res.json();
         }).then(result => {
             fleetList = result;
+            console.info("当前页面车队总数："+fleetList.length);
             $("#device").gridalicious('append', makeboxes());
         }).catch(err => {
             console.error('请求错误', err);
@@ -138,7 +147,7 @@
                 content += fleetList[i].memberCount+"</strong>&nbsp;车标:<strong style='color:red;'>"+fleetList[i].flag+"</strong></p>";
                 content += "<p>车号:<strong style='color:red;'>"+fleetList[i].number+"</strong>&nbsp;始创:<strong style='color:red;'>";
                 content += (new Date(1000*fleetList[i].created_at)).toLocaleDateString() +"</strong>";
-                var radioObj = sessionStorage.getItem("radioStatus");
+                let radioObj = sessionStorage.getItem("radioStatus");
                 if(radioObj=="no_limit"||radioObj==null){
                   content +="&nbsp;限制:<strong style='color:red;'>无</strong></p>";
                 }else if(radioObj=="level_limit"){
@@ -147,6 +156,16 @@
                   let nobleName = fleetList[i].applyJoinOption.desc;
                   nobleName = nobleName.substring(nobleName.length-2);
                   content +="&nbsp;限制:<strong style='color:red;'>"+ nobleName +"</strong></p>";
+                }else if(radioObj == "fans_limit"){
+                    content += "<p>粉丝牌:";
+                    let fansList = fleetList[i].applyJoinOption.fansBadgeList;
+                    if(fansList!=undefined && fansList.length>0){
+                       for(let i=0;i<fansList.length;i++){
+                            content +="<a href='https://www.douyu.com/"+fansList[i].rid+"' style='color:darkgreen;font-weight:bold' target='_blank' alt='点击进入该粉丝直播间'>"+fansList[i].bName+"[Lv."+fansList[i].bLevel+"]&nbsp;";
+                       } 
+                    }
+                    content+= "</p>";
+
                 }
                 div.append(content);
                 boxes.push(div);
