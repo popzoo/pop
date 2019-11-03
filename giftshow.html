@@ -107,7 +107,7 @@
           }
       }
 
-      function getDyanmicGift(){
+      function getDyanmicGift(){//todo:==================================这个json需要提速
           fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/dynamic_gift.json',{
               method: 'GET',
               mode: 'cors', //请求模式为跨域
@@ -244,18 +244,18 @@
                   let div = $('<div></div>').addClass('item');
                   var content = "";
                   if(sessionStorage.getItem("radioGift")=="static_gift"){
-                      content = "<img src='"+giftList[i].hdt+"'/><p>名称:<strong style='color:red;'>";
+                      content = "<a href='"+giftList[i].hdt+"' target='_blank'><img src='"+giftList[i].hdt+"'/></a><p>名称:<strong style='color:red;'>";
                       content += giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>"+giftList[i].id+"</strong></p>";
                   }else if(sessionStorage.getItem("radioGift")=="enter_room"){
-                      content = "<a href='https://sta-op.douyucdn.cn/"+giftList[i].web_img_swf+"' target='_blank'><img src='https://sta-op.douyucdn.cn/"+giftList[i].web_img+"'/><p>名称:<strong style='color:red;'>";
-                      content += giftList[i].effect_name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>"+giftList[i].ceid+"</strong></p><p><strong style='color:blue;'>点击有动态flash特效</strong></p></a>";
+                      content = "<a href='https://sta-op.douyucdn.cn/"+giftList[i].web_img_swf+"' target='_blank'><img src='https://sta-op.douyucdn.cn/"+giftList[i].web_img+"'/></a><p>名称:<strong style='color:red;'>";
+                      content += giftList[i].effect_name+"</strong>&nbsp;特效ID:<strong style='color:red;'>"+giftList[i].ceid+"</strong></p><p><strong style='color:blue;'>点击有动态flash特效</strong></p>";
                       // content = "<videosrc='https://https://sta-op.douyucdn.cn/"+giftList[i].web_img_swf+"' width='320' autoplaycontrolsloop></video>";
                   }else if(sessionStorage.getItem("radioGift")=="fans_medal"){
-                      content = "<a href='https://www.douyu.com/"+giftList[i].roomId+"' target='_blank'><img src='"+giftList[i].imgurl+"'/><p>房间号:<strong style='color:red;'>"+giftList[i].roomId+"</strong></p></a>";
+                      content = "<a href='https://www.douyu.com/"+giftList[i].roomId+"' target='_blank'><img src='"+giftList[i].imgurl+"'/></a><p>房间号:<strong style='color:red;'>"+giftList[i].roomId+"</strong></p>";
                   }else{//默认动态         cimg 小动态   big_effect_icon     web_flash
-                      content = "<a href='"+giftList[i].himg+"' target='_blank'><img src='"+giftList[i].himg+"'/><p>名称:<strong style='color:red;'>"+giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>";
+                      content = "<a href='"+giftList[i].himg+"' target='_blank'><img src='"+giftList[i].himg+"'/></a><p>名称:<strong style='color:red;'>"+giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>";
                       content += giftList[i].id+"</strong></p><p>经验:<strong style='color:red;'>"+giftList[i].exp+"</strong>&nbsp;连击等待:<strong style='color:red;'>"+giftList[i].hit_interval/1000+"s</strong></p>";
-                      content += "<p>价格:<strong style='color:red;'>"+giftList[i].price_name+"</strong>&nbsp;显示时常:<strong style='color:red;'>"+giftList[i].stay_time/1000 +"s</strong></p><p>简介:<strong style='color:red;'>"+giftList[i].intro+"</strong></p></a>";
+                      content += "<p>价格:<strong style='color:red;'>"+giftList[i].price_name+"</strong>&nbsp;显示时常:<strong style='color:red;'>"+giftList[i].stay_time/1000 +"s</strong></p><p>简介:<strong style='color:red;'>"+giftList[i].intro+"</strong></p>";
                   }
                   div.append(content);
                   boxes.push(div);
