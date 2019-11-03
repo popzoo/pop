@@ -16,7 +16,7 @@
     <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> 
 <div style=" height:30px; color:#3C3C3C; line-height:30px; margin:20px 0 -30px 0px; padding:0 0 0 0;text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
     <span class="collapse" style="float: left;white-space: nowrap; margin-left: 50px; font-size: 20px;color:#4D4D4D;">
-        <dfn data-info="整合了斗鱼的动态礼物，静态礼物、进场欢迎特效，斗鱼官方礼物五花八门且定制类礼物难睹芳容，所以从斗鱼抓取数据做成展示页面，以方便大家查看。动态礼物需要爬取，博主不定时手动更新数据，静态礼物和进场欢迎特效则与官方实时同步！">
+        <dfn data-info="此页面整合了斗鱼的动态礼物、静态礼物、进场欢迎特效和定制粉丝牌模板，斗鱼官方礼物五花八门且定制类礼物难睹芳容，斑竹从斗鱼爬取展示以方便大家查看。动态礼物要爬取，斑竹不定时手动更新，静态礼物、进场特效和粉丝牌数据则与官方实时同步！">
         <!-- 筛选: -->
         <label for="dynamic_gift" class="radio">
             <span class="radio-bg"></span>
@@ -116,7 +116,7 @@
           }).then(res => {
               return res.text();
           }).then(result => {
-              giftList=[].concat(JSON.parse(result));
+              giftList=[].concat(JSON.parse(result).reverse());
               console.info("动态礼物总数:"+giftList.length);
               $("#device").gridalicious('append', makeboxes());
           }).catch(err => {
