@@ -17,6 +17,7 @@ p{padding:5px 0px;}
 /*仅用于此项目*/
 .content{padding:70px;width:80%;margin:0 auto;}
 .item{background:rgba(153,153,153,0.5);color:#333;border-radius:3px;padding:10px;word-break:break-all;white-space:pre-wrap;}
+#loading{width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:#BBBBBB;margin:10px auto 30px;color:black;}
 /*.item{background:#bebebe;color:#333;border-radius:3px;padding:10px;word-break:break-all;white-space:pre-wrap;}*/
 .item img{width:100%;height:auto;}
 .item p{text-align:center;margin-top:5px;}

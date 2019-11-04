@@ -61,7 +61,7 @@
   <div class="level-3"></div>
 </div>
     <!-- loading按钮自己通过样式调整 -->
-<footer id="loading" style="width:300px;height:30px;line-height:30px;font-size:18px;text-align:center;border-radius:3px;opacity:0.8;background:#BBBBBB;margin:10px auto 30px;color:black;">
+<footer id="loading">
     加载中...
 </footer>
 <!-- <script src="js/jquery-1.8.3.min.js"></script> -->
@@ -72,12 +72,30 @@
 <script type="text/javascript">
     var count = 0;
     var fleetList = new Array();
-    // 按钮初始化
+    //======================================================
+    //=================== Script init ======================
+    //======================================================
+    window.onload = function initProgram(){
+        let radioObj = sessionStorage.getItem("motorcadeStatus")!=null ? sessionStorage.getItem("motorcadeStatus") : "no_limit";
+        let radioNode = document.getElementById(radioObj);
+        radioNode.setAttribute("checked","checked");
+        radioEventListener();
+        var urlTail = "fleet_type_1.json";//default
+        if(radioObj == "level_limit"){
+            urlTail = "fleet_type_2.json";
+        }else if(radioObj == "noble_limit"){
+            urlTail = "fleet_type_3.json";
+        }else if(radioObj == "fans_limit"){
+            urlTail = "fleet_type_5.json";
+        }
+        getMotorcadeData(urlTail);
+    }    
+    // add Event Listener of radio onchange
     function radioEventListener(){
         var radioObj = document.getElementById("no_limit");
         if(radioObj!=undefined){
-            // var anchor1 = document.getElementById("no_limit");
-            radioObj.addEventListener("change",(function(){radioFunc('no_limit');}));
+            var anchor1 = radioObj;
+            anchor1.addEventListener("change",(function(){radioFunc('no_limit');}));
             var anchor2 = document.getElementById("level_limit");
             anchor2.addEventListener("change",(function(){radioFunc('level_limit');}));
             var anchor3 = document.getElementById("noble_limit");
@@ -88,43 +106,30 @@
             console.error("无法获取radio元素");
         }
     }
-    // 监听radio的onchange事件
+    // listenning radio onchange event
     function radioFunc(msg){
         if(msg == "no_limit"){
-            sessionStorage.setItem("radioStatus",msg);
+            sessionStorage.setItem("motorcadeStatus",msg);
             location.reload();
         }else if(msg =="level_limit"){
-            sessionStorage.setItem("radioStatus",msg);
+            sessionStorage.setItem("motorcadeStatus",msg);
             location.reload();
         }else if(msg =="noble_limit"){
-            sessionStorage.setItem("radioStatus",msg);
+            sessionStorage.setItem("motorcadeStatus",msg);
             location.reload();
         }else if(msg =="fans_limit"){
-            sessionStorage.setItem("radioStatus",msg);
+            sessionStorage.setItem("motorcadeStatus",msg);
             location.reload();
         }
     }
-    //=========================图片加载=============================  
-    window.onload = function fetchGet(){
-        var radioObj = sessionStorage.getItem("radioStatus")!=null ? sessionStorage.getItem("radioStatus") : "no_limit";
-        var radioNode = document.getElementById(radioObj);
-        // console.info(radioObj)
-        radioNode.setAttribute("checked","checked");
-        radioEventListener();//监听radio;
-        var urlTail = "fleet_type_1.json";//默认
-        if(radioObj == "level_limit"){
-            urlTail = "fleet_type_2.json";
-        }else if(radioObj == "noble_limit"){
-            urlTail = "fleet_type_3.json";
-        }else if(radioObj == "fans_limit"){
-            urlTail = "fleet_type_5.json";
-        }
+
+    function getMotorcadeData(urlTail){
         // fetch('https://raw.githubusercontent.com/popzoo/gift-show/master/json/'+urlTail,{
         fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/'+urlTail,{
             method: 'GET',
-            mode: 'cors', //请求模式为跨域
-            cache: 'default', //no-cache
-            credentials: 'omit', // 同源则加入凭据头,omit,include
+            mode: 'cors', 
+            cache: 'default', 
+            credentials: 'omit', 
         }).then(res => {
             return res.json();
         }).then(result => {
@@ -135,8 +140,8 @@
             console.error('请求错误', err);
         })
     }
-		//滚动条滚动时添加内容
-      function makeboxes(){
+	//adding content with random way when scroll bar moved
+    function makeboxes(){
         var boxes = new Array;
         if(count*50<fleetList.length){
             for(let i=count*50;i<Math.min((count+1)*50, fleetList.length);i++){
@@ -147,7 +152,7 @@
                 content += fleetList[i].memberCount+"</strong>&nbsp;车标:<strong style='color:red;'>"+fleetList[i].flag+"</strong></p>";
                 content += "<p>车号:<strong style='color:red;'>"+fleetList[i].number+"</strong>&nbsp;始创:<strong style='color:red;'>";
                 content += (new Date(1000*fleetList[i].created_at)).toLocaleDateString() +"</strong>";
-                let radioObj = sessionStorage.getItem("radioStatus");
+                let radioObj = sessionStorage.getItem("motorcadeStatus");
                 if(radioObj=="no_limit"||radioObj==null){
                   content +="&nbsp;限制:<strong style='color:red;'>无</strong></p>";
                 }else if(radioObj=="level_limit"){
@@ -178,14 +183,14 @@
         }
         return undefined;
     }
-		$(document).ready(function () {
-      //滚动条事件
+	$(document).ready(function () {
+      //scroll event
       $(window).scroll(function () {
         if(($(window).scrollTop() + $(window).height()) >= $(document).height()-50){//&& makeboxes()!=undefined
           $("#device").gridalicious('append', makeboxes());
         }
       });         
-		  //主要部分
+	   //maintain
       $("#device").gridalicious({
           gutter: 20,//缝隙宽度
           width: 300,//图片宽度
