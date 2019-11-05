@@ -88,7 +88,12 @@
         }else if(radioObj == "fans_limit"){
             urlTail = "fleet_type_5.json";
         }
-        getMotorcadeData(urlTail);
+        // get origin data, last term should change use fast and reliable way to get data 
+        if(navigator.language == "zh-CN"){//according to primary language
+            getMotorcadeDataDomestic(urlTail);
+        }else{
+            getMotorcadeDataAbroad(urlTail);
+        }
     }    
     // add Event Listener of radio onchange
     function radioEventListener(){
@@ -122,8 +127,8 @@
             location.reload();
         }
     }
-
-    function getMotorcadeData(urlTail){
+    // get data from abroad statically cdn
+    function getMotorcadeDataAbroad(urlTail){
         // fetch('https://raw.githubusercontent.com/popzoo/gift-show/master/json/'+urlTail,{
         fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/'+urlTail,{
             method: 'GET',
@@ -131,15 +136,34 @@
             cache: 'default', 
             credentials: 'omit', 
         }).then(res => {
-            return res.json();
+            return res.text();
         }).then(result => {
-            fleetList = result;
+            fleetList = JSON.parse(result.substring(17, result.length-2));
             console.info("当前页面车队总数："+fleetList.length);
             $("#device").gridalicious('append', makeboxes());
         }).catch(err => {
             console.error('请求错误', err);
         })
     }
+    // get data from domestic coding
+    function getMotorcadeDataDomestic(urlTail){
+        $.ajax({
+            async : true,
+            url : "https://coding.net/u/lvlanxing/p/popzoo/git/raw/master/json/"+urlTail,
+            type : "GET",
+            dataType : "jsonp", 
+            jsonp : 'callback', 
+            jsonpCallback: 'DYConfigCallback', 
+            success: function(response, status, xhr){
+                if(status == "success"){
+                    fleetList=[].concat(response);
+                    console.info("此页面车队总数:"+fleetList.length);
+                    $("#device").gridalicious('append', makeboxes());
+                }
+            }
+        });
+    }
+
 	//adding content with random way when scroll bar moved
     function makeboxes(){
         var boxes = new Array;
