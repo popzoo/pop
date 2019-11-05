@@ -88,6 +88,8 @@
         }else if(radioObj == "fans_limit"){
             urlTail = "fleet_type_5.json";
         }
+        // no use cdn for cache, just use its reflected within minutes, but master change will take effected in 24 hours
+        // urlTail +="?env=dev";
         // get origin data, last term should change use fast and reliable way to get data 
         if(navigator.language == "zh-CN"){//according to primary language
             getMotorcadeDataDomestic(urlTail);
@@ -142,6 +144,7 @@
             console.info("当前页面车队总数："+fleetList.length);
             $("#device").gridalicious('append', makeboxes());
         }).catch(err => {
+            getMotorcadeDataDomestic(urlTail);
             console.error('请求错误', err);
         })
     }
@@ -160,6 +163,10 @@
                     console.info("此页面车队总数:"+fleetList.length);
                     $("#device").gridalicious('append', makeboxes());
                 }
+            },
+            error:function(xhr,status,error){
+                console.info(status);
+                getMotorcadeDataAbroad(urlTail);
             }
         });
     }

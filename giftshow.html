@@ -179,7 +179,7 @@
       //======================== Get Data ============================
       //===============================================================
       function getDyanmicGiftAbroad(){
-          fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/dynamic_gift.json',{
+          fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/dynamic_gift.json?env=dev',{
               method: 'GET',
               mode: 'cors', 
               cache: 'default', 
@@ -187,17 +187,18 @@
           }).then(res => {
               return res.text();
           }).then(result => {
-              giftList=[].concat(JSON.parse(result).reverse());
+              giftList=[].concat(JSON.parse(result.substring(17, result.length-2)));
               console.info("动态礼物总数:"+giftList.length);
               $("#device").gridalicious('append', makeboxes());
           }).catch(err => {
+            getDyanmicGiftDomestic();
               console.error('请求错误', err);
           })        
       }
       function getDyanmicGiftDomestic(){
           $.ajax({
               async : true,
-              url : "https://coding.net/u/lvlanxing/p/popzoo/git/raw/master/json/dynamic_config.json",
+              url : "https://coding.net/u/lvlanxing/p/popzoo/git/raw/master/json/dynamic_gift.json",
               type : "GET",
               dataType : "jsonp", 
               jsonp : 'callback', 
@@ -208,7 +209,11 @@
                       console.info("进场欢迎特效总数:"+giftList.length);
                       $("#device").gridalicious('append', makeboxes());
                   }
-              }
+              },
+              error:function(xhr,status,error){
+                  console.info(status);
+                  getDyanmicGiftAbroad();
+              }              
           }); 
       }
 
