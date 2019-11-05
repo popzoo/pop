@@ -38,9 +38,9 @@
             <input type="radio" name="radio_fire" id="static_gift"  value="static_gift" />静态礼物
             <span class="radio-on"></span>
         </label>
-        <label for="enter_room" class="radio">
+        <label for="enter_effect" class="radio">
             <span class="radio-bg"></span>
-            <input type="radio" name="radio_fire" id="enter_room"  value="enter_room" />进场欢迎
+            <input type="radio" name="radio_fire" id="enter_effect"  value="enter_effect" />进场欢迎
             <span class="radio-on"></span>
         </label>
         <label for="fans_medal" class="radio">
@@ -56,6 +56,16 @@
         <label for="broadcast_effect" class="radio">
             <span class="radio-bg"></span>
             <input type="radio" name="radio_fire" id="broadcast_effect"  value="broadcast_effect" />广播横幅
+            <span class="radio-on"></span>
+        </label>
+        <label for="eticket_tip" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_fire" id="eticket_tip"  value="eticket_tip" />电子门票
+            <span class="radio-on"></span>
+        </label>          
+        <label for="immortal_info" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_fire" id="immortal_info"  value="immortal_info" />幻神信息
             <span class="radio-on"></span>
         </label>        
       </dfn>
@@ -91,11 +101,15 @@
           let radioNode = document.getElementById(radioObj);
           radioNode.setAttribute("checked","checked");
           radioEventListener();
-          if(radioObj == "dynamic_gift"){
-              getDyanmicGift();
+          if(radioObj == "dynamic_gift"){//judge user is aborad or domestic
+              if(navigator.language == "zh-CN"){//according to primary language
+                  getDyanmicGiftDomestic();
+              }else{
+                  getDyanmicGiftAbroad();
+              }
           }else if(radioObj == "static_gift"){
               getStaticGift();
-          }else if(radioObj == "enter_room"){
+          }else if(radioObj == "enter_effect"){
               getEnterFlash();
           }else if(radioObj == "fans_medal"){
               getFansMedal();
@@ -103,6 +117,10 @@
               getAchievementInfo();
           }else if(radioObj == "broadcast_effect"){
               getBroadcastEffect();
+          }else if(radioObj == "eticket_tip"){
+              getETicketTip();
+          }else if(radioObj == "immortal_info"){
+              getImmortalInfo();              
           }
       }
       // listenning radio onchange event
@@ -113,7 +131,7 @@
           }else if(msg =="static_gift"){
               sessionStorage.setItem("radioGift",msg);
               location.reload();
-          }else if(msg =="enter_room"){
+          }else if(msg =="enter_effect"){
               sessionStorage.setItem("radioGift",msg);
               location.reload();
           }else if(msg =="fans_medal"){
@@ -124,7 +142,13 @@
               location.reload();
           }else if(msg =="broadcast_effect"){
               sessionStorage.setItem("radioGift",msg);
+              location.reload();          
+          }else if(msg =="eticket_tip"){
+              sessionStorage.setItem("radioGift",msg);
               location.reload();
+          }else if(msg =="immortal_info"){
+              sessionStorage.setItem("radioGift",msg);
+              location.reload();              
           }
       }
 
@@ -135,14 +159,18 @@
               anchor1.addEventListener("change",(function(){radioFunc('dynamic_gift');}));
               let anchor2 = document.getElementById("static_gift");
               anchor2.addEventListener("change",(function(){radioFunc('static_gift');}));
-              let anchor3 = document.getElementById("enter_room");
-              anchor3.addEventListener("change",(function(){radioFunc('enter_room');}));
+              let anchor3 = document.getElementById("enter_effect");
+              anchor3.addEventListener("change",(function(){radioFunc('enter_effect');}));
               let anchor4 = document.getElementById("fans_medal");
               anchor4.addEventListener("change",(function(){radioFunc('fans_medal');}));
               let anchor5 = document.getElementById("achieve_medal");
               anchor5.addEventListener("change",(function(){radioFunc('achieve_medal');}));
               let anchor6 = document.getElementById("broadcast_effect");
-              anchor6.addEventListener("change",(function(){radioFunc('broadcast_effect');}));                            
+              anchor6.addEventListener("change",(function(){radioFunc('broadcast_effect');}));              
+              let anchor7 = document.getElementById("eticket_tip");
+              anchor7.addEventListener("change",(function(){radioFunc('eticket_tip');}));
+              let anchor8 = document.getElementById("immortal_info");
+              anchor8.addEventListener("change",(function(){radioFunc('immortal_info');}));                                         
           }else{
               console.warn("无法获取radio元素");
           }
@@ -150,7 +178,7 @@
       //===============================================================
       //======================== Get Data ============================
       //===============================================================
-      function getDyanmicGift(){
+      function getDyanmicGiftAbroad(){
           fetch('https://cdn.statically.io/gh/popzoo/pop/master/json/dynamic_gift.json',{
               method: 'GET',
               mode: 'cors', 
@@ -165,6 +193,23 @@
           }).catch(err => {
               console.error('请求错误', err);
           })        
+      }
+      function getDyanmicGiftDomestic(){
+          $.ajax({
+              async : true,
+              url : "https://coding.net/u/lvlanxing/p/popzoo/git/raw/master/json/dynamic_config.json",
+              type : "GET",
+              dataType : "jsonp", 
+              jsonp : 'callback', 
+              jsonpCallback: 'DYConfigCallback', 
+              success: function(response, status, xhr){
+                  if(status == "success"){
+                      giftList=[].concat(response);
+                      console.info("进场欢迎特效总数:"+giftList.length);
+                      $("#device").gridalicious('append', makeboxes());
+                  }
+              }
+          }); 
       }
 
       function getStaticGift(){
@@ -299,13 +344,58 @@
                               giftList.push(jsonData[key]);
                           }
                       }
-                      // console.info(giftList);
                       console.info("广播横幅特效总数:"+giftList.length);
                       $("#device").gridalicious('append', makeboxes());   
                   }
               }
           }); 
-      }      
+      }
+
+      function getImmortalInfo(){
+          $.ajax({
+              async : true,
+              url : "https://webconf.douyucdn.cn/resource/common/activity/acthsgz_w.json",
+              type : "GET",
+              dataType : "jsonp", 
+              jsonp : 'callback', 
+              jsonpCallback: 'DYConfigCallback',
+              success: function(response, status, xhr){
+                  if(status == "success"){
+                      let jsonData=response.data;
+                      for(let i = 0;i<jsonData.noble_names.length;i++){
+                          let jsonInfo = {};
+                          jsonInfo.noble_names = jsonData.noble_names[i];
+                          jsonInfo.noble_uids = jsonData.noble_uids[i];
+                          jsonInfo.begin_time = jsonData.step1_begin_time[i];
+                          jsonInfo.back_pic = jsonData.bpic_list["bpic"+(i+1)*3];
+                          giftList.push(jsonInfo);
+                      }
+                      console.info(giftList);
+                      console.info("广播横幅特效总数:"+giftList.length);
+                      $("#device").gridalicious('append', makeboxes());   
+                  }
+              }
+          });         
+      }
+      function getETicketTip(){
+          $.ajax({
+              async : true,
+              url : "https://webconf.douyucdn.cn/resource/common/activity/eticket_live_event.json",
+              type : "GET",
+              dataType : "jsonp", 
+              jsonp : 'callback', 
+              jsonpCallback: 'DYConfigCallback',
+              success: function(response, status, xhr){
+                  if(status == "success"){
+                      giftList=[].concat(response.data);
+                      console.info("电子门票总数:"+giftList.length);
+                      $("#device").gridalicious('append', makeboxes());
+                      // console.info(giftList);
+                      $("#device").gridalicious('append', makeboxes());                       
+                  }
+              }
+          });         
+      }
       //===============================================================
       //+++++simulate scroll event and add content with random way+++++
       //===============================================================            
@@ -314,11 +404,11 @@
           if(count*60<giftList.length){
               for(let i=count*60;i<Math.min((count+1)*60, giftList.length);i++){
                   let div = $('<div></div>').addClass('item');
-                  var content = "";
+                  var content = ""; 
                   if(sessionStorage.getItem("radioGift")=="static_gift"){
                       content = "<a href='"+giftList[i].hdt+"' target='_blank'><img src='"+giftList[i].hdt+"'/></a><p>名称:<strong style='color:red;'>";
                       content += giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>"+giftList[i].id+"</strong></p>";
-                  }else if(sessionStorage.getItem("radioGift")=="enter_room"){
+                  }else if(sessionStorage.getItem("radioGift")=="enter_effect"){
                       content = "<a href='https://sta-op.douyucdn.cn/"+giftList[i].web_img_swf+"' target='_blank'><img src='https://sta-op.douyucdn.cn/"+giftList[i].web_img+"'/></a><p>名称:<strong style='color:red;'>";
                       content += giftList[i].effect_name+"</strong>&nbsp;特效ID:<strong style='color:red;'>"+giftList[i].ceid+"</strong></p><p><strong style='color:blue;'>点击有动态flash特效</strong></p>";
                       // content = "<videosrc='https://https://sta-op.douyucdn.cn/"+giftList[i].web_img_swf+"' width='320' autoplaycontrolsloop></video>";
@@ -330,6 +420,12 @@
                   }else if(sessionStorage.getItem("radioGift")=="broadcast_effect"){
                       content = "<a href='"+giftList[i].swf_url+"' target='_blank'><img src='"+giftList[i].h5_head_pic+"'/></a><p>名称:<strong style='color:red;'>";
                       content += giftList[i].name+"</strong></p>";
+                  }else if(sessionStorage.getItem("radioGift")=="eticket_tip"){
+                      content = "<a href='"+giftList[i].package_resource+"' target='_blank'><img src='"+giftList[i].package_resource+"'/></a><p>事件编号:<strong style='color:red;'>";
+                      content += giftList[i].event_id+"</strong>&nbsp;礼物编号:<strong style='color:red;'>"+giftList[i].gift_id+"</strong></p>";
+                  }else if(sessionStorage.getItem("radioGift")=="immortal_info"){
+                      content = "<a href='"+giftList[i].back_pic+"' target='_blank'><img src='"+giftList[i].back_pic+"'/></a><p><strong style='color:red;'>";
+                      content += giftList[i].noble_names+"</strong>&nbsp;用户ID:<strong style='color:red;'>"+giftList[i].noble_uids+"</strong></p><p>开启时间:<strong style='color:red;'>"+(new Date(1000*giftList[i].begin_time)).toLocaleDateString()+"</strong></p>";
                   }else{//default page  || cimg    big_effect_icon     web_flash
                       content = "<a href='"+giftList[i].himg+"' target='_blank'><img src='"+giftList[i].himg+"'/></a><p>名称:<strong style='color:red;'>"+giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>";
                       content += giftList[i].id+"</strong></p><p>经验:<strong style='color:red;'>"+giftList[i].exp+"</strong>&nbsp;连击等待:<strong style='color:red;'>"+giftList[i].hit_interval/1000+"s</strong></p>";
@@ -354,13 +450,13 @@
 			  });
 			//main body
         $("#device").gridalicious({
-            gutter: 20,//缝隙宽度
-            width: 240,//图片宽度
-            animate: true,//启用动画
+            gutter: 20,//gap width
+            width: 240,//pic width
+            animate: true,//use animate
             animationOptions: {
                 speed: 100,
                 duration: 200,
-                queue: false,//同步显示
+                queue: false,//sync display
                 complete:function(data){}
             },
         });
