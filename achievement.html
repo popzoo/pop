@@ -70,7 +70,55 @@
     //===============================================================
     //++++++++++++++++++++++ Get Data with Jsonp ++++++++++++++++++++
     //===============================================================
-      window.onload = function initprograme(){
+      var num = 0;
+      var roomList = new Array();
+      function getFirePowerRoom(){
+          console.log('loading');
+          // fetch('https://www.douyu.com/japi/firepower/apinc/activeTask/getRecRid', {
+          // fetch('https://3qj09kl3vp.sse.codesandbox.io/https://www.douyu.com/japi/firepower/apinc/activeTask/getRecRid', {
+          //     method: 'GET',
+          //     mode: 'cors',
+          //     cache:'default',
+          //     credentials: 'omit'
+          // }).then(res => {
+          //     return res.text();    
+          // }).then(json => {
+          //     console.info("火力房间号："+json);
+          //     // roomList.push(json.data);
+          //     // let set = new Set(roomList);
+          //     // set.add(json.data);
+          //     // roomList = Array.from(set);
+          //     // getfireRoomList();
+          // }).catch(err => {
+          //     console.error('请求错误', err);
+          // })
+
+            var ajax = new XMLHttpRequest();
+            ajax.timeout = 2000;
+            ajax.responseType = "json";
+            ajax.open('get', 'https://3qj09kl3vp.sse.codesandbox.io/https://www.douyu.com/japi/firepower/apinc/activeTask/getRecRid', true); //采用异步
+            ajax.send();
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    fireRequestFilter(ajax.response.data);
+                }
+            }
+          // $.getJSON("https://www.douyu.com/japi/firepower/apinc/activeTask/getRecRid?callback=?", function(data){
+          //   alert("Data Loaded: " + data);
+          // });
+      }
+      getfireRoomList();
+      
+      function getfireRoomList(){
+          if(roomList.length<4){
+              getFirePowerRoom();
+              num++;
+          }else{
+              console.info(roomList);//https://rpic.douyucdn.cn/asrpic/191105/848337_2242.png/webpdy1
+          }
+      }
+
+      function initprograme(){
           var radioObj = sessionStorage.getItem("radioGift")!=null ? sessionStorage.getItem("radioGift") : "achieve_medal";
           var radioNode = document.getElementById(radioObj);
           radioNode.setAttribute("checked","checked");
