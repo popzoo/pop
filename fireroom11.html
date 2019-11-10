@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
 <meta content="lvlanxing" name="author">
-<title>火力猫</title>
+<title>火力房间</title>
 <link rel="shortcut icon" href="https://rawcdn.githack.com/popzoo/pop/9d4121eed5cbb035e55203b8a9e56a73dcf2e6bf/images/favicon.ico"> 
 <meta content="礼物,斗鱼礼物,礼物大全,礼物集合" name="Keywords">
 <link rel="stylesheet" href="css/pop_page.css">
@@ -109,13 +109,39 @@
             var jsonData = JSON.parse(result);
             // console.info(result);
             if(jsonData!=undefined){
-                // for(let i=0; i<roomList.length;i++){
-                //     console.info(roomList[i]);
+                // for(let i=0; i<jsonData.length; i++){
+                //     console.info(jsonData[i]);
+                //     getAnchorInfo(jsonData[i]);
                 // }
-                roomList = [].concat(jsonData);
-                $("#device").gridalicious('append', makeboxes());
+                var i=0;
+                getAnchorInfo(jsonData[i]);
+                function getAnchorInfo(jsonData){
+                    fetch('https://bojianger.com/data/api/common/search.do?keyword='+jsonData.roomId, {
+                        method: 'GET',
+                        mode: 'cors',
+                        cache: 'default',
+                        credentials: 'omit'
+                    }).then(result => {
+                        return result.text();
+                    }).then(txt => {
+                        let json = JSON.parse(txt);
+                        jsonData.peopleNum = json.data.anchorVo.audience_count;
+                        jsonData.avatarUrl = json.data.anchorVo.avator;
+                        jsonData.anchorName = json.data.anchorVo.name;
+                        roomList.push(jsonData);
+                        ++i;
+                        if(i==jsonData.length){
+                            $("#device").gridalicious('append', makeboxes());
+                            return;
+                        }else{
+                            getAnchorInfo(jsonData[i]);
+                        }
+                    }).catch(err => {
+                        console.error('REQUEST ERROR', err);
+                    })                
+                }                
+                // roomList = [].concat(jsonData);
             }
-
         }).catch(err => {
             console.error('请求错误', err);
         })        
@@ -138,12 +164,14 @@
 	//模拟滚动条滚动时随机添加内容
     function makeboxes(){
       	var boxes = new Array;   
-      	if(count*20<roomList.length){
-      	    for(let i=count*20;i<Math.min((count+1)*20, roomList.length);i++){
+      	if(count*25<roomList.length){
+      	    for(let i=count*25;i<Math.min((count+1)*25, roomList.length);i++){
       	        // console.info(roomList[i].property_name);
+                let leftTime = roomList[i].remainTime - parseInt((new Date().getTime() - roomList[i].curtime)/1000);
       	        let div = $('<div></div>').addClass('item');
-      	        let  content = "<a href='"+roomList[i].roomId+"' target='_blank'><img src='"+roomList[i].remainTime+"'/></a><p>名称:<strong style='color:red;'>";
-      	            content += roomList[i].remainTime+"</strong></p><p>火力信息:<strong style='color:red;'>"+roomList[i].content+"</strong></p>";
+      	        let  content = "<a href='https://www.douyu.com/"+roomList[i].roomId+"' target='_blank'><img src='"+roomList[i].avatarUrl+"'/></a><p>主播名称:<strong style='color:red;'>";
+      	            content += roomList[i].anchorName+"</strong>&nbsp;房间人数<strong style='color:red;'>"+roomList[i].peopleNum+"</strong></p><p>剩余时间:<strong style='color:red;'>";
+                    content += leftTime+"</strong>房间ID:<strong style='color:red;'>"+roomList[i].roomId+"</strong></p><p>火力信息:<strong style='color:red;'>"+roomList[i].content+"</strong></p>";
       	        div.append(content);
       	        boxes.push(div);
       	    }
