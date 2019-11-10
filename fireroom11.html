@@ -138,17 +138,17 @@
 	//模拟滚动条滚动时随机添加内容
     function makeboxes(){
       	var boxes = new Array;   
-      	if(count*50<medalList.length){
-      	    for(let i=count*50;i<Math.min((count+1)*50, medalList.length);i++){
-      	        // console.info(medalList[i].property_name);
+      	if(count*50<roomList.length){
+      	    for(let i=count*50;i<Math.min((count+1)*50, roomList.length);i++){
+      	        // console.info(roomList[i].property_name);
       	        let div = $('<div></div>').addClass('item');
       	        var content = "";
       	        if(sessionStorage.getItem("radioGift")=="achieve_medal"){
       	            content = "<a href='"+roomList[i].roomId+"' target='_blank'><img src='"+roomList[i].remainTime+"'/></a><p>名称:<strong style='color:red;'>";
       	            content += roomList[i].remainTime+"</strong></p><p>火力信息:<strong style='color:red;'>"+roomList[i].content+"</strong></p>";
       	        // }else if(sessionStorage.getItem("radioGift")=="broadcast_effect"){
-      	        //     content = "<a href='"+medalList[i].swf_url+"' target='_blank'><img src='"+medalList[i].h5_head_pic+"'/></a><p>名称:<strong style='color:red;'>";
-      	        //     content += medalList[i].name+"</strong></p>";
+      	        //     content = "<a href='"+roomList[i].swf_url+"' target='_blank'><img src='"+roomList[i].h5_head_pic+"'/></a><p>名称:<strong style='color:red;'>";
+      	        //     content += roomList[i].name+"</strong></p>";
       	        }
       	        div.append(content);
       	        boxes.push(div);
@@ -156,7 +156,7 @@
       	    count++;
       	    return boxes;
       	}else{
-      	    $('#loading').text('全部加载完毕，展示图片总数:'+medalList.length);
+      	    $('#loading').text('全部加载完毕，展示图片总数:'+roomList.length);
       	}
       	return undefined;
     }
