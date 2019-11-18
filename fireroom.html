@@ -71,7 +71,16 @@
         };
         return fmt;
     }
-    window.onload = function getBothFireList(){
+    window.onload = function checkValidation(){
+        let validate = sessionStorage.getItem('personalDanmu');
+        if(validate==="true"){
+            getBothFireList();
+        }else{
+            alert("请登录昵称验证后才能查看火力共享房间！");
+            window.location.href = "https://popzoo.github.io/zoo/hiddenFlower.html";
+        }
+    }
+    function getBothFireList(){
         let date = new Date();
         getFireRoomList(dateFormat('HH',date));
         function getFireRoomList(curhour){
