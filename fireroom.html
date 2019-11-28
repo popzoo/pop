@@ -215,7 +215,7 @@
         getWelfareRoomList(date1,code);
         function getWelfareRoomList(dateTime,code){
             let fireUrl = 'WelfareNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-welfareInfo.json';
-            fetch('https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/'+fireUrl,{
+            fetch('https://welfare-1253626683.cos.ap-beijing.myqcloud.com/'+fireUrl,{
                 method: 'GET',
                 mode: 'cors', 
                 cache: 'default', 
