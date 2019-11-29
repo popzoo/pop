@@ -114,8 +114,8 @@
         if(validate==="true"){
             initProgram();
         }else if(validate==="limit"){
-            document.getElementById("all_fire").style.display="none";
-            document.getElementById("all_welfare").style.display="none";
+            document.getElementsByTagName("label")[2].style.display="none";
+            document.getElementsByTagName("label")[3].style.display="none";
             initProgram();
         }else{
             alert("请登录昵称验证后才能查看火力共享房间！");
