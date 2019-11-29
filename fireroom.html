@@ -113,7 +113,7 @@
     window.onload = function checkValidation(){
         if(validate==="true" || validate==="limit"){
             initProgram();
-            setInterval(initProgram,60*1000);
+            setInterval(function(){location.reload()},60*1000);
         }else{
             alert("请登录昵称验证后才能查看火力共享房间！");
             window.location.href = "https://popzoo.github.io/zoo/hiddenFlower.html";
