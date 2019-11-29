@@ -111,11 +111,7 @@
         return fmt;
     }
     window.onload = function checkValidation(){
-        if(validate==="true"){
-            initProgram();
-        }else if(validate==="limit"){
-            document.getElementsByTagName("label")[2].style.display="none";
-            document.getElementsByTagName("label")[3].style.display="none";
+        if(validate==="true" || validate==="limit"){
             initProgram();
         }else{
             alert("请登录昵称验证后才能查看火力共享房间！");
@@ -158,17 +154,22 @@
     function radioFunc(msg){
         if(msg === "effect_fire"){
             sessionStorage.setItem("shareNodeStatus",msg);
-            location.reload();
         }else if(msg ==="all_fire"){
-            sessionStorage.setItem("shareNodeStatus",msg);
-            location.reload();
+            if(validate==="limit"){
+                alert("登陆昵称后可查看今日全部共享节点");
+            }else{
+                sessionStorage.setItem("shareNodeStatus",msg);
+            }
         }else if(msg ==="effect_welfare"){
             sessionStorage.setItem("shareNodeStatus",msg);
-            location.reload();
         }else if(msg ==="all_welfare"){
-            sessionStorage.setItem("shareNodeStatus",msg);
-            location.reload();
-        }                        
+            if(validate==="limit"){
+                alert("登陆昵称后可查看今日全部共享节点");
+            }else{
+                sessionStorage.setItem("shareNodeStatus",msg);
+            }             
+        }
+        location.reload();                      
     }
     function getFireList(code){
         var date1 = new Date();
