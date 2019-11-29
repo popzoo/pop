@@ -154,6 +154,7 @@
     function radioFunc(msg){
         if(msg === "effect_fire" || msg ==="effect_welfare"){
             sessionStorage.setItem("shareNodeStatus",msg);
+            location.reload(); 
         }else if(msg ==="all_fire" || msg ==="all_welfare"){
             if(validate==="limit"){
                 var flag = confirm("登陆昵称后可查看今日全部节点，“确定”则去登陆界面，“取消”则关闭此框”");
@@ -162,9 +163,9 @@
                 }
             }else{
                 sessionStorage.setItem("shareNodeStatus",msg);
+                location.reload(); 
             }
         }
-        location.reload();                      
     }
     function getFireList(code){
         var date1 = new Date();
