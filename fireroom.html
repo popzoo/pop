@@ -86,7 +86,7 @@
     var count = 0;
     var fireNum = 0;
     var date1,date2;
-    var roomList = new Array();
+    var roomList = [];
     var radioObj = sessionStorage.getItem("shareNodeStatus")!=null ? sessionStorage.getItem("shareNodeStatus") : "effect_fire";
     var validate = sessionStorage.getItem('personalDanmu')!=null ? sessionStorage.getItem('personalDanmu') : "false";
     // ===================================================================
@@ -110,29 +110,30 @@
         };
         return fmt;
     }
-    window.onload = function checkValidation(){
-        if(validate==="true" || validate==="limit"){
-            initProgram();
-            setInterval(function(){location.reload()},60*1000);
-        }else{
-            alert("请登录昵称验证后才能查看火力共享房间！");
-            window.location.href = "https://popzoo.github.io/zoo/hiddenFlower.html";
-        }
-    }
+    // window.onload = function checkValidation(){
+    //     if(validate==="true" || validate==="limit"){
+    //         initProgram();
+    //     }else{
+    //         alert("请登录昵称验证后才能查看火力共享房间！");
+    //         window.location.href = "https://popzoo.github.io/zoo/hiddenFlower.html";
+    //     }
+    // }
+    initProgram();
     // 初始化脚本
-    // initProgram();
     function initProgram(){
         let radioNode = document.getElementById(radioObj);
         radioNode.setAttribute("checked","checked");
         radioEventListener();
         if(radioObj === "effect_fire"){
-            getFireList(0);
+            getNodeList(0,true);
         }else if(radioObj === "all_fire"){
-            getFireList(1);
+            // getNodeList(1,true);
+            getConciseStatNode(true);
         }else if(radioObj === "effect_welfare"){
-            getWelfareList(0);
+            getNodeList(0,false);
         }else if(radioObj === "all_welfare"){
-            getWelfareList(1);
+            // getNodeList(1,false);
+            getConciseStatNode(false);
         }        
     }
     // add Event Listener of radio onchange
@@ -157,24 +158,26 @@
             sessionStorage.setItem("shareNodeStatus",msg);
             location.reload(); 
         }else if(msg ==="all_fire" || msg ==="all_welfare"){
-            if(validate==="limit"){
+            if(validate=="true"){
+                sessionStorage.setItem("shareNodeStatus",msg);
+                location.reload();                 
+            }else{
                 var flag = confirm("登陆昵称后可查看今日全部节点，“确定”则去登陆界面，“取消”则关闭此框”");
                 if(flag){
-                    window.location.href = "https://popzoo.github.io/zoo/hiddenFlower.html";
+                    window.location.href = "https://popzoo.github.io/barrage/";
                 }
-            }else{
-                sessionStorage.setItem("shareNodeStatus",msg);
-                location.reload(); 
             }
         }
     }
-    function getFireList(code){
+    function getNodeList(code,isFire){//0.solo,1.all
         var date1 = new Date();
         var date2 = new Date(date1.getTime() - 3600*1000);//reback 1 hour
-        getFireRoomList(date1,code);
-        function getFireRoomList(dateTime,code){
-            let fireUrl = 'FireNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-fireInfo.json';
-            fetch('https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/'+fireUrl,{
+        getRoomList(date1,code,);
+        function getRoomList(dateTime,code){
+            let fireUrl = 'https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/FireNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-fireInfo.json';
+            let wellUrl = 'https://welfare-1253626683.cos.ap-beijing.myqcloud.com/WelfareNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-welfareInfo.json';
+            let reqUrl = isFire? fireUrl:wellUrl; 
+            fetch(reqUrl,{
                 method: 'GET',
                 mode: 'cors', 
                 cache: 'default', 
@@ -183,78 +186,34 @@
                 return res.json();
             }).then(jsonData => {
                 if(jsonData!=undefined){
-                    console.info("获取"+dateFormat('HH',dateTime)+"时段的火力数目："+jsonData.length);
+                    console.info("获取"+dateFormat('HH',dateTime)+"时段的节点数目："+jsonData.length);
                     roomList = roomList.concat(jsonData);
                     loopRoomList(dateTime,code);
                 }
             }).catch(err => {
-                loopRoomList(dateTime, code);           
+                loopRoomList(dateTime, code);//404           
                 // console.error('请求错误', err);
             })        
         }
         function loopRoomList(dateTime,code){
             if(code === 0){//effect_fire
-                if(dateTime != date2){
-                    dateTime = date2;
-                    getFireRoomList(date2,code);
+                if(dateTime != date2 && parseInt(dateFormat("MM",dateTime))<12){
+                    getRoomList(date2,code); // dateTime = date2;
                 }else{
-                    getFilterRoomList(roomList);
+                    getFilterRoomList();
                 }                        
             }else{//all_fire
                 if(parseInt(dateFormat('HH',dateTime))>0){
                     dateTime = new Date(dateTime.getTime()-3600*1000);
-                    getFireRoomList(dateTime,code);
+                    getRoomList(dateTime,code);
                 }else{
-                    getFilterRoomList(roomList);
+                    getFilterRoomList();
                 }                        
             }     
         }        
     }
-
-    function getWelfareList(code){
-        var date1 = new Date();
-        var date2 = new Date(date1.getTime() - 3600*1000);//reback 1 hour
-        getWelfareRoomList(date1,code);
-        function getWelfareRoomList(dateTime,code){
-            let fireUrl = 'WelfareNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-welfareInfo.json';
-            fetch('https://welfare-1253626683.cos.ap-beijing.myqcloud.com/'+fireUrl,{
-                method: 'GET',
-                mode: 'cors', 
-                cache: 'default', 
-                credentials: 'omit', 
-            }).then(res => {
-                return res.json();
-            }).then(jsonData => {
-                if(jsonData!=undefined){
-                    console.info("获取"+dateFormat('HH',dateTime)+"时段的火力数目："+jsonData.length);
-                    roomList = roomList.concat(jsonData);
-                    loopRoomList(dateTime,code);
-                }
-            }).catch(err => {
-                loopRoomList(dateTime, code);           
-                // console.error('请求错误', err);
-            })        
-        }
-        function loopRoomList(dateTime,code){
-            if(code === 0){//effect_fire
-                if(dateTime != date2){
-                    dateTime = date2;
-                    getWelfareRoomList(date2,code);
-                }else{
-                    getFilterRoomList(roomList);
-                }                        
-            }else{//all_fire
-                if(parseInt(dateFormat('HH',dateTime))>0){
-                    dateTime = new Date(dateTime.getTime()-3600*1000);
-                    getWelfareRoomList(dateTime,code);
-                }else{
-                    getFilterRoomList(roomList);
-                }                        
-            }     
-        }         
-    }
     // filter black room
-    function getFilterRoomList(rmList){
+    function getFilterRoomList(){
         $.ajax({
             async : true,
             url : "https://coding.net/u/lvlanxing/p/popzoo/git/raw/master/json/filterConfigCallback.json",
@@ -265,9 +224,10 @@
             success: function(response, status, xhr){
                 if(status == "success"){
                     // console.info(response.roomFilter);
-                    roomList = [].concat(distinct(rmList,response.roomFilter));
+                    roomList = [].concat(distinct(roomList,response.roomFilter));
                     if(radioObj === "all_fire" || radioObj === "all_welfare"){
                         $("#device").gridalicious('append', makeAllBoxes());
+                        console.info("今日火力节点分享总数："+roomList.length);
                     }else{//effect_fire  effect_welfare
                         $("#device").gridalicious('append', makeEffectBoxes());
                     }
@@ -287,7 +247,109 @@
             }
         }
         return arr1;
-    }    
+    }
+// ===============================================================================
+// ===============================================================================
+    // get temp statistics node(one request)
+    function getConciseStatNode(isFire){
+        const realDate = new Date();
+        const dateTime = new Date(realDate.getTime() - 3600*1000);//reback 1 hour
+        let reqUrl1 = 'https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/FireNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/temp-'+ dateFormat('HH',dateTime) +'-fireInfo.json';
+        let reqUrl2 = 'https://welfare-1253626683.cos.ap-beijing.myqcloud.com/WelfareNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/temp-'+ dateFormat('HH',dateTime) +'-welfareInfo.json';
+        let reqUrl = isFire ? reqUrl1: reqUrl2;
+        fetch(reqUrl,{
+            method: 'GET',
+            mode: 'cors', 
+            cache: 'default', 
+            credentials: 'omit', 
+        }).then(res => {
+            return res.json();
+        }).then(jsonData => {
+            roomList = roomList.concat(jsonData);
+            isFire ?getHourStatNode(true,realDate,0): getHourStatNode(false,realDate,0);//单节点统计
+            console.info("获取"+dateFormat('HH',dateTime)+"点之前统计节点："+jsonData.length);
+        }).catch(err => {
+            isFire ? getHourStatNode(true,realDate,1): getHourStatNode(false,realDate,1);//全节点统计
+            // console.error('请求错误', err);
+        })
+    }
+    // get Hours Node (many or current data)
+    function getHourStatNode(isFire,dateTime,code){//0.solo,1.all
+        const realDate = new Date(dateTime.getTime());
+        const tempDate = new Date(dateTime.getTime() - 3600*1000);//reback 1 hour
+        if(code===1){//all
+            getRoomList(new Date(dateTime.setHours(0,0,0,0)));
+        }else{//solo
+            getRoomList(realDate);
+        }
+        function getRoomList(dateTime){
+            let fireUrl = 'https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/FireNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-fireInfo.json';
+            let wellUrl = 'https://welfare-1253626683.cos.ap-beijing.myqcloud.com/WelfareNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-welfareInfo.json';
+            let reqUrl = isFire? fireUrl:wellUrl; 
+            fetch(reqUrl,{
+                method: 'GET',
+                mode: 'cors', 
+                cache: 'default', 
+                credentials: 'omit', 
+            }).then(res => {
+                return res.json();
+            }).then(jsonData => {
+                if(jsonData!=undefined){
+                    console.info("获取"+dateFormat('HH',dateTime)+"时段的节点数目："+jsonData.length);
+                    roomList = jsonData.concat(roomList);
+                    loopRoomList(dateTime);
+                }
+            }).catch(err => {
+                loopRoomList(dateTime);//404           
+                // console.error('请求错误', err);
+            })        
+        }
+        function loopRoomList(dateTime){
+
+            if(parseInt(dateFormat('HH',dateTime)) == parseInt(dateFormat('HH',realDate))){
+                getFilterRoomList();
+            }else if(parseInt(dateFormat('HH',dateTime)) == parseInt(dateFormat('HH',tempDate))){
+                getRoomList(new Date(dateTime.getTime()+3600*1000));
+                // roomList排序
+                roomList.sort(function(a,b){//倒叙排序
+                    return b.sendTime - a.sendTime;
+                });                
+                const tempList = [].concat(roomList);
+                putTempStatNode(isFire,tempDate,tempList);
+
+            }else{
+                getRoomList(new Date(dateTime.getTime()+3600*1000));
+            }                        
+        }        
+    }
+    // upload temp statistics node
+    function putTempStatNode(isFire,tempDate,tempList){
+        const firePrefix = 'https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/';
+        const welfarePrefix = 'https://welfare-1253626683.cos.ap-beijing.myqcloud.com/';
+        let prefixUrl = isFire?firePrefix:welfarePrefix;
+        var key = 'FireNode/'+dateFormat("YYYY-mm-dd",tempDate) +'/temp-'+dateFormat('HH',tempDate)+'-fireInfo.json';
+        if(!isFire){
+            key = 'WelfareNode/'+dateFormat("YYYY-mm-dd",tempDate) +'/temp-'+dateFormat('HH',tempDate)+'-welfareInfo.json';
+        }
+        var fd = new FormData();
+        fd.append('key', key);
+        fd.append('Content-Type','');
+        fd.append('file', JSON.stringify(tempList));
+        fetch(prefixUrl,{
+            method: 'POST',
+            mode: 'cors',
+            body: fd,
+            credentials: "omit",
+        }).then(response => {// console.info(response);
+            if(response.headers.get('ETag')!=null){
+                isFire? console.info("FireTempPut:Success"): console.info("WelfareTempPut:Success");
+            }
+        }).catch(err => {
+            isFire? console.error("FireTempPut:Failure"): console.error("WelfareTempPut:Failure");
+        })
+    }        
+    //======================================================================================== 
+    //======================================================================================== 
     // filter some black room
     // function getFilterRoomList(rmList){
     //     fetch('https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/filterConfig.json',{
@@ -353,10 +415,8 @@
         $('#loading').text('全部加载完毕，有效节点总数:'+ fireNum);
         return boxes;
     }
-
     function makeAllBoxes(){
         var boxes = new Array;
-        console.info("今日火力节点分享总数："+roomList.length);
         if(count*loadItem < roomList.length){
             for(let j= count*loadItem;j<Math.min((count+1)*loadItem, roomList.length);j++){
                 let leftTime = roomList[j].remainTime - parseInt((new Date().getTime() - roomList[j].sendTime)/1000);
