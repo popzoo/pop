@@ -27,7 +27,7 @@
 </div> -->
 <div style=" height:30px; color:#3C3C3C; line-height:30px; margin:20px 0 -30px 0; padding:0 0 0 0;text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
         <span class="collapse" style="float: left;white-space: nowrap; margin-left: 50px; font-size: 20px;color:#4D4D4D;">
-        <dfn style="text-align:left;" data-info="这里是斑竹大大回馈大家的福利社，大家可以根据展示的火力/抽奖信息直接选择去鱼丸红包多的房间去薅羊毛，如果是粉丝福利社抽奖活动，最好是多个账号轮番轰炸，如果是火力抽奖请注意若房间出现一大波公用弹幕的我方大军，请最好转移阵地，省的把主播或房管惹烦了一窝端了(出现过几次这种情况)，最好的办法建议您上传私有弹幕，这样大家弹幕都不一样，连我们羊毛大军人士都不知道您是否是友军哈，页面每隔60s自动刷新一次!">
+        <dfn style="text-align:left;" data-info="这里是斑竹大大回馈大家的福利社，大家可以根据展示的火力/抽奖信息直接选择去鱼丸红包多的房间去薅羊毛，如果是粉丝福利社抽奖活动，最好是多个账号轮番轰炸，如果是火力抽奖请注意若房间出现一大波公用弹幕的我方大军，请最好转移阵地，省的把主播或房管惹烦了一窝端了(出现过几次这种情况)，最好的办法建议您上传私有弹幕，这样大家弹幕都不一样，连我们羊毛大军人士都不知道您是否是友军哈">
         <!-- 筛选条件: -->
         <label for="effect_fire" class="radio">
             <span class="radio-bg"></span>
@@ -172,7 +172,7 @@
     function getNodeList(code,isFire){//0.solo,1.all
         var date1 = new Date();
         var date2 = new Date(date1.getTime() - 3600*1000);//reback 1 hour
-        getRoomList(date1,code,);
+        getRoomList(date1,code);
         function getRoomList(dateTime,code){
             let fireUrl = 'https://fire-room-1253626683.cos.ap-beijing.myqcloud.com/FireNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-fireInfo.json';
             let wellUrl = 'https://welfare-1253626683.cos.ap-beijing.myqcloud.com/WelfareNode/'+dateFormat("YYYY-mm-dd",dateTime) +'/'+ dateFormat('HH',dateTime) +'-welfareInfo.json';
@@ -197,7 +197,7 @@
         }
         function loopRoomList(dateTime,code){
             if(code === 0){//effect_fire
-                if(dateTime != date2 && parseInt(dateFormat("MM",dateTime))<12){
+                if(dateTime != date2 && parseInt(dateFormat("MM",dateTime))<10){
                     getRoomList(date2,code); // dateTime = date2;
                 }else{
                     getFilterRoomList();
