@@ -13,7 +13,7 @@ h2{font-size:20px;text-indent:4px;font-weight:normal;font-style:italic;color:#a1
 h2 span{color:#444;}
 a{color:#777;text-decoration:none;}
 a:hover{color:#222;}
-p{padding:5px 0px;}
+p{padding:0px 0px;}
 /*仅用于此项目*/
 .content{padding:20px;width:80%;margin:0 auto;}
 .item{background:rgba(153,153,153,0.5);color:#333;border-radius:3px;padding:10px;word-break:break-all;white-space:pre-wrap;}
