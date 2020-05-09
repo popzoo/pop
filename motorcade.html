@@ -132,9 +132,10 @@
             cache: 'default', 
             credentials: 'omit', 
         }).then(res => {
-            return res.text();
+            return res.json();
         }).then(result => {
-            fleetList = JSON.parse(result.substring(17, result.length-2));
+            // fleetList = JSON.parse(result.substring(17, result.length-2));
+            fleetList = [].concat(result);
             console.info("当前页面车队总数："+fleetList.length);
             $("#device").gridalicious('append', makeboxes());
         }).catch(err => {
