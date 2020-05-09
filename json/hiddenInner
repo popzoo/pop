@@ -1,0 +1,261 @@
+      <h1 style="font-size:22pt; line-height:150%; margin:17pt 0pt 16.5pt; padding-top: 15px;orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:center; widows:0">
+        <span style="font-family:等线; font-size:22pt; font-weight:bold">薅羊毛脚本隐藏功能</span></h1>
+      <p style="font-size:14pt; line-height:150%; margin:0pt; orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:14pt; font-weight:bold">目前隐藏功能包含的内容有:</span>
+      </p>
+      <ol type="1" style="margin:0pt; padding-left:4pt;font-size:12pt; font-weight:bold;line-height: 30px;">
+        <li>
+          1.自动发送答谢水友礼物弹幕+自动发送感谢房管开火弹幕（默认不启用）；
+        </li><li>
+          2.自定义私有弹幕后，是否启用AI弹幕与之混用（默认不启用，注：未定义私有弹幕则启用AI）；
+        </li><li>
+          3.是否开启自动取关功能（默认是不自动取关的，从版本0.9.0重新启用）；              
+        </li><li>
+          4.是否开启匿名用户功能（默认是半匿名状态，如"大王***"）；          
+        </li><li>
+          5.是否关闭幻神弹幕特效（默认有幻神特效，此功能一般没必要关闭）；
+        </li><li>          
+          6.自定义设置自动跳转次数上限（默认每天100次，不同等级对应不同跳转次数上限）;
+        </li><li>
+          7.自定义设置火力全开/粉丝福利社结束后等待时间（默认等待60s没重开火力全开则跳转）；
+        </li><li>          
+          8.自定义不符合房间的跳转延迟等待时间（新跳转房间条件不达标，则默认是3s后跳转）;           
+        </li><li>          
+          9.自定义弹幕发送时间间隔（默认间隔是15s左右，从版本0.9.1开始启用）;       
+        </li><li>          
+          10.自定义鱼丸筛选权重（默认鱼丸权重为200，从版本0.9.8开始启用）;
+        </li>
+      </ol>
+      <p style="font-size:12pt; line-height:150%; margin:0pt; orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:12pt;font-weight: 600;">原🀄自动取关🀄功能又重新启用了，原因是频繁操作会触发斗鱼的验证机制(非牌子和非特殊关注房间，不会自动取关)，后期还会增加一些有趣实用的功能，更多实时动态请多关注QQ群(650178547)内动态！Here We Go，教程走起：</span>
+      </p>
+
+      <h2 style="font-size:14pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:14pt; font-weight:bold">1、自动答谢礼物弹幕+感谢房管开火弹幕，使用图文如下：</span></h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">首先打开电脑弹幕区的“</span>
+        <span style="background-color:#ffff00; font-family:等线; font-size:12pt">收藏的弹幕</span>
+        <span style="font-family:等线; font-size:12pt">”，然后点击“</span>
+        <span style="background-color:#ffff00; font-family:等线; font-size:12pt">编辑</span>
+        <span style="font-family:等线; font-size:12pt">”；</span></p>       
+      </p>
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_1.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_2.png" width="100%"></td>
+      </tr></table>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 10px 20px; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">b)</span>
+        <span style="font-family:等线; font-size:12pt">输入框填写“🀄礼物答谢🀄”，只要包含这几个特殊字符就可以了，大家可以</span><br>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">复制这里</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄礼物答谢🀄</span>
+      </p>
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_3.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_4.png" width="100%"></td>
+      </tr></table>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt; widows:0">
+        <span style="font-family:等线; font-size:12pt">c)</span>
+        <span style="font-family:等线; font-size:12pt">按照上图步骤点击确定和完成。然后刷新页面后即开启了隐藏用户配置功能。</span>
+      </p>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt; widows:0">
+        <span style="font-family:等线; font-size:12pt">d)</span>
+        <span style="font-family:等线; font-size:12pt">使用上述的礼物致谢功能，需要记得选择弹幕轰炸哦。</span>
+      </p>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt; widows:0">
+        <span style="font-family:等线; font-size:12pt">e)</span>
+        <span style="font-family:等线; font-size:12pt">下面是实际效果图，大家欣赏下;</span>
+      </p>
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_5.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_6.png" width="100%"></td>
+      </tr></table>      
+      <p style="margin:0pt; orphans:0; text-align:justify; line-height: 25px; widows:0">
+        <span style="font-family:等线; font-size:12pt">f)</span>
+        <span style="background-color:#ffff00; font-family:等线; font-size:12pt; font-weight:bold">使用注意：</span>
+        <span style="font-family:等线; font-size:12pt">如果房间有火力全开的话，还会自动发AI或云弹幕，但谢礼弹幕的优先级是最高的，谢礼弹幕时间间隔一般在10s±5左右（外加自己和上一条自己弹幕间隔数随机2~5个），所以有可能漏掉礼物横幅展示时间较短的礼物（比如一张办卡，显示6s）; 如果不使用斗鱼的屏蔽小礼物的话，也会有感谢弹幕的，建议非房管用暂时还是屏蔽掉吧。不然刷弹幕太多了容易霸屏被封！</span>
+      </p>
+      <p style="margin-left:20px; orphans:0; widows:0">
+        <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_7.png" width="336" height="221" alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline;"/></p>
+
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">2、自定义私有弹幕与AI混用功能</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">在已经设置了自定义的弹幕库的前提下，是否启用AI弹幕与之混用。之所以保留这个功能，主要是预防前期私有云弹幕的弹幕量较少，拿AI沙雕萌新来凑数是最实用的了！默认是不开启的，(若您没有定制私有云弹幕，那么AI弹幕是默认开启的)，您可以单条弹幕存放（左下图）也可以合并存放（右下图）;</span>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄弹幕混用🀄</span>
+      </p>         
+      </p>      
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_15.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_16.png" width="100%"></td>
+      </tr></table>
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">3、自动取关功能</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">由于火力房间频繁关注和取关的操作会触发斗鱼的验证机制(滑块验证)，所以斑竹大大根据大家不同的需要又重新恢复了自动取关的设置功能，默认是不自动取关的，大家可以单条弹幕存放（左下图）也可以合并存放（右下图）;</span>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄自动取关🀄</span>
+      </p>         
+      </p>      
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_8.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_9.png" width="100%"></td>
+      </tr></table>
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">4、开启匿名用户功能</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">由于之前网站的一些数据被恶意毁坏，同时为了大家数据安全着想，脚本安全做了全面升级，默认情况下使用脚本收集用户共享的网络节点信息是半匿名的，如“大王***”共享了一个火力节点，如果开启“匿名用户”模式，则显示为“匿名***”共享了一个火力节点，把用户的安全和隐私力求做到最好，您可以单条弹幕存放（左下图）也可以合并存放（右下图）;</span>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄匿名用户🀄</span>
+      </p>         
+      </p>      
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_20.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_16.png" width="100%"></td>
+      </tr></table>
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">5、关闭幻神特效</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">若您每天开自动脚本薅羊毛次数较多或电脑性能较弱的话，建议您关闭幻神弹幕特效，这样会节省一点性能和资源，主要是页面加载也不容易出更多的错误。您可以单条弹幕存放（左下图）也可以合并存放（右下图）;</span>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄关闭幻神🀄</span>
+      </p>         
+      </p>      
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_18.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_16.png" width="100%"></td>
+      </tr></table>
+
+      <h2 style="font-size:14pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:14pt; font-weight:bold">6、自定义火力跳转次数上限功能</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:'Segoe UI Symbol'; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt; font-weight:normal;line-height: 20px;">自定义每天火力全开的跳转次数上限，默认是每天自动跳转上限是100次，下图中的150即是用户配置的自动跳转次数上限阈值，数值根据自己的需求自定义。图中这个数值(一定要注意格式，箭头后是纯数字，箭头不可缺失，可以有空格，单独存放)；参数取值范围：1~随心所欲大；</span>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄跳转上限🀄▶150</span>
+      </p>           
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_10.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_11.png" width="100%"></td>
+      </tr></table>
+   
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">b)</span>
+        <span style="font-family:等线; font-size:12pt">不同账号等级和有无贵族称号，可以安全跳转的上限次数也不相同，下图是根据目前群内大家通过无数次的小黑屋试验出的规律，仅供大家参考，被系统禁言关小黑屋了，也不要惊慌，如果是贵族的话还可以找客服解封，非贵族可以去斑竹的<a style="color:red;font-weight:bold;" href="https://github.com/wolf-scream/FirePowerSeek/issues/2" target="_blank">github</a>找解决办法撒。</span>
+      </p>
+     <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_17.png" width="77%"></td>
+      </tr></table>      
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">7、自定义火力全开/粉丝福利社活动结束后等待时间</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">自定义设置火力全开/粉丝福利社结束后的等待时间，下图的数值120表示等待火力全开/福利社活动结束时间超过120s,则自动跳转寻找新的火力全开/福利社直播间，默认时间等待60s。(一定要注意格式，箭头后是纯数字，箭头不可缺失，可以有空格，单独存放)；参数取值范围：1~随心所欲大；</span>
+      </p>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄结束等待🀄▶120</span>
+      </p>         
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_12.png" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_13.png" width="100%"></td>
+      </tr></table>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">b)</span>
+        <span style="background-color:#ffff00; font-family:等线; font-size:12pt; font-weight:bold">使用注意:</span>
+        <span style="font-family:等线; font-size:12pt">当存放多条同样配置的参数时，则最新保存的起作用，如下图，默认起作用的最新配置的结束等待130s。此规则同样适用于“跳转上限”和“延迟等待”两个带数字的配置参数，但不建议这样混乱使用，最好删除原有重复的配置！</span>
+      </p>        
+      <p style="margin-left: 20px; orphans:0; text-align:justify; widows:0">
+        <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_14.png"/>
+        <span style="font-family:等线; font-size:10.5pt"></span>
+      </p>
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">8、自定义不符合房间的跳转延迟等待时间</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">自定义不符合房间的跳转延迟等待时间，默认是如果房间不符合开火条件则3s后会自动跳转下一个房间，下图的数值20表示如果这个新跳转的房间不符合开火,则等待在房间总共等待20s后自动跳转到下一个火力全开房间（注意20s是指在此房间总共停留20s，所以实际弹窗显示的时间会小于这个数值，主要与您的网速情况有关）。如果每天薅羊毛次数较多的水友，建议此数值调大点，主要可以预防碰到连续多个房间不符合条件，引发的连续页面跳转，造成的浏览器无法及时响应，或卡死、崩溃的状态(一定要注意格式，箭头后是纯数字，箭头不可缺失，可以有空格，单独存放)；参数取值范围：1~随心所欲大；</span>
+      </p>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄跳转延迟🀄▶20</span>
+      </p>         
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">b)</span>
+        <span style="background-color:#ffff00; font-family:等线; font-size:12pt; font-weight:bold">使用注意:</span>
+        <span style="font-family:等线; font-size:12pt"><br>如果每天薅羊毛次数较多的水友，建议此数值调大点，主要可以预防碰到连续多个房间不符合条件，引发的连续页面跳转，造成的浏览器无法及时响应，或卡死、崩溃的状态(一定要注意格式，箭头后是纯数字，箭头不可缺失，可以有空格，单独存放)；参数取值范围：1~随心所欲大；</span>
+      </p>        
+      <p style="margin-left: 20px; orphans:0; text-align:justify; widows:0">
+        <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_19.png" />
+        <span style="font-family:等线; font-size:10.5pt"></span>
+      </p>
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">9、自定义弹幕发送时间间隔</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">自定义弹幕发送间隔时间基数，单位为s，脚本默认是10s+1.5s随机数，且需要满足自己的弹幕间隔数大于3~6条。下图的数值15表示弹幕发送间隔时间最低为15s，实际数值要大于这基数一点，满足各位老爷想提速或减速的需求撒~(一定要注意格式，箭头后是纯数字，箭头不可缺失，可以有空格，单独存放)；参数取值范围：1~随心所欲大；</span>
+      </p>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄弹幕时隔🀄▶15</span>
+      </p>         
+      <p style="margin-left: 20px; orphans:0; text-align:justify; widows:0">
+        <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_21.png" />
+        <span style="font-family:等线; font-size:10.5pt"></span>
+      </p>
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">
+        <span style="font-family:'等线 Light'; font-size:16pt; font-weight:bold">10、自定义鱼丸奖品筛选权重</span>
+      </h2>
+      <p style="font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 21pt; orphans:0; text-align:justify; text-indent:-21pt;">
+        <span style="font-family:等线; font-size:12pt">a)</span>
+        <span style="font-family:等线; font-size:12pt">自定义鱼丸奖品筛选权重，单位为个，即当前鱼丸份数与单个鱼丸价值的乘积，说白了就是当前火力的鱼丸总数目，脚本默认基数为200，即条件可能是200鱼丸共1个，或100鱼丸共2个，或10条弹幕赠送20鱼丸等等。做鱼丸权重的筛选最大的好处可以避免单份999的鱼丸的流失，如下图，而且用户可以自定义自己想要筛选的鱼丸，跳转次数多则可以适当调大些，否则还是建议采用默认值，满足各位老爷的不同鱼丸基数的需求撒~(一定要注意格式，箭头后是纯数字，箭头不可缺失，可以有空格，单独存放)；参数取值范围：1~随心所欲大；</span>
+      </p>
+      <p style="margin:5px 0 10px 20px; orphans:0; text-align:justify; widows:0">
+        <span style="background-color:#ffff00; color:#ff0000; font-family:等线; font-size:12pt">这里复制</span>
+        <span style="background-color:#ffff00; color:#ff0000; font-family:Wingdings; font-size:10.5pt"></span>
+        <span style="font-family:等线; font-size:12pt">🀄鱼丸权重🀄▶200</span>
+      </p>
+      <table style="margin-left: 20px;"><tr>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_22.jpg" width="100%"></td><td>&nbsp;&nbsp;</td>
+        <td><img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/hiddenIns_23.jpg" width="100%"></td>
+      </tr></table>      
+
+
+      <h2 style="font-size:16pt; line-height:173%; margin:13pt 0pt; orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify; widows:0">特别说明</span></h2>
+      <ol type="1" style="margin:0pt; padding-left:0pt">
+        <li style="font-family:等线; font-size:12pt; line-height:150%; margin:0pt 0pt 0pt 14pt; orphans:0; padding-left:4pt; text-align:justify; text-indent:0pt; widows:0">
+          <span style="font-family:等线; font-size:12pt">1>上面的功能配置全都是存储在浏览器的localStorage中，只在当前浏览器的一个用户账号起作用，如果用户换电脑，换浏览器，或换账号则都需要重新配置;</span>
+        </li><br/>
+      </ol>
