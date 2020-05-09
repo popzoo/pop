@@ -118,9 +118,9 @@
                 arr.push(jsonContent);
             }
             // console.info(arr);
-            localStorage.setItem("DynamicGiftArray💡🌄💡",JSON.stringify(numList));
-            giftList = "DYConfigCallback("+JSON.stringify(arr)+");";
-            saveJsonContent(giftList,'dynamic_gift.json');
+            // localStorage.setItem("DynamicGiftArray💡🌄💡",JSON.stringify(numList));
+            // giftList = "DYConfigCallback("+JSON.stringify(arr)+");";
+            saveJsonContent(JSON.stringify(arr),'dynamic_gift.json');
         }
     }
 
