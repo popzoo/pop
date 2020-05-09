@@ -123,18 +123,18 @@
     }
 
     function downloadAll(){
-    	fleetType1 = "DYConfigCallback("+JSON.stringify(fleetType1)+");";
-    	fleetType2 = "DYConfigCallback("+JSON.stringify(fleetType2)+");";
-    	fleetType3 = "DYConfigCallback("+JSON.stringify(fleetType3)+");";
-    	fleetType5 = "DYConfigCallback("+JSON.stringify(fleetType5)+");";
-        saveJsonContent(fleetType1,'fleet_type_1.json');
-        saveJsonContent(fleetType2,'fleet_type_2.json');
-        saveJsonContent(fleetType3,'fleet_type_3.json');
-        saveJsonContent(fleetType5,'fleet_type_5.json');
-        // saveJsonContent(JSON.stringify(fleetType1),'fleet_type_1.json');
-        // saveJsonContent(JSON.stringify(fleetType2),'fleet_type_2.json');
-        // saveJsonContent(JSON.stringify(fleetType3),'fleet_type_3.json');
-        // saveJsonContent(JSON.stringify(fleetType5),'fleet_type_5.json');
+    	// fleetType1 = "DYConfigCallback("+JSON.stringify(fleetType1)+");";
+    	// fleetType2 = "DYConfigCallback("+JSON.stringify(fleetType2)+");";
+    	// fleetType3 = "DYConfigCallback("+JSON.stringify(fleetType3)+");";
+    	// fleetType5 = "DYConfigCallback("+JSON.stringify(fleetType5)+");";
+     //    saveJsonContent(fleetType1,'fleet_type_1.json');
+     //    saveJsonContent(fleetType2,'fleet_type_2.json');
+     //    saveJsonContent(fleetType3,'fleet_type_3.json');
+     //    saveJsonContent(fleetType5,'fleet_type_5.json');
+        saveJsonContent(JSON.stringify(fleetType1),'fleet_type_1.json');
+        saveJsonContent(JSON.stringify(fleetType2),'fleet_type_2.json');
+        saveJsonContent(JSON.stringify(fleetType3),'fleet_type_3.json');
+        saveJsonContent(JSON.stringify(fleetType5),'fleet_type_5.json');
     }
 
     function saveJsonContent (content, fileName) {
