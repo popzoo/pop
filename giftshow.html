@@ -174,24 +174,42 @@
       //======================== Get Data ============================
       //===============================================================
       function getDyanmicGiftDomestic(){
-          $.ajax({
-              async : true,
-              url : "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/json/dynamic_gift.json",
-              type : "GET",
-              dataType : "jsonp", 
-              jsonp : 'callback', 
-              jsonpCallback: 'DYConfigCallback', 
-              success: function(response, status, xhr){
-                  if(status == "success"){
-                      giftList=[].concat(response);
-                      console.info("进场欢迎特效总数:"+giftList.length);
-                      $("#device").gridalicious('append', makeboxes());
-                  }
-              },
-              error:function(xhr,status,error){
-                  console.error(status);
-              }              
-          }); 
+          // $.ajax({
+          //     async : true,
+          //     url : "https://cdn.jsdelivr.net/gh/popzoo/pop/json/dynamic_gift.json",
+          //     type : "GET",
+          //     dataType : "jsonp", 
+          //     jsonp : 'callback', 
+          //     jsonpCallback: 'DYConfigCallback', 
+          //     success: function(response, status, xhr){
+          //         if(status == "success"){
+          //             console.info(response);
+          //             giftList=[].concat(response);
+          //             console.info("动态礼物总数:"+giftList.length);
+          //             $("#device").gridalicious('append', makeboxes());
+          //         }
+          //     },
+          //     error:function(xhr,status,error){
+          //         console.error(status);
+          //     }              
+          // });
+          fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/dynamic_gift.json',{
+              method: 'GET',
+              mode: 'cors', 
+              cache: 'default', 
+              credentials: 'omit'
+          }).then(res => {
+              return res.json();
+          }).then(result => {
+            console.info(result);
+            if(result != undefined){
+                giftList=[].concat(result);
+                console.info("动态礼物总数:"+giftList.length);
+                $("#device").gridalicious('append', makeboxes());
+            }
+          }).catch(err => {
+              console.error('请求错误', err);
+          })          
       }
       function getStaticGift(){
           $.ajax({
@@ -326,7 +344,8 @@
                           giftArray.push(jsonInfo);
                       }
                       console.info("幻神统计:"+giftArray.length);
-
+                      // giftList = giftList.concat(giftArray);
+                      // $("#device").gridalicious('append', makeboxes());
                       var j = 0;
                       function getUserInfoBojiang(uid,nobleName,beginTM){
                               fetch('https://bojianger.com/data/api/common/search.do?keyword='+uid, {
@@ -338,27 +357,31 @@
                                   return result.text();
                               }).then(txt => {
                                   let json = JSON.parse(txt);
-                                  let jsonStr = {};
-                                  jsonStr.userAvatar = json.data.audienceVo.audience_avator;
-                                  jsonStr.userName = json.data.audienceVo.audience_name;
-                                  jsonStr.userLevel = json.data.audienceVo.level;
-                                  jsonStr.nobleName = json.data.audienceVo.nlString;
-                                  jsonStr.userId = uid;
-                                  jsonStr.preNobleName = nobleName;
-                                  jsonStr.beginTime = beginTM;
-                                  giftList.push(jsonStr);
-                                  ++j;
+                                  if(json.data.audienceVo!=null){
+                                      let jsonStr = {};
+                                      jsonStr.userAvatar = json.data.audienceVo.audience_avator;
+                                      jsonStr.userName = json.data.audienceVo.audience_name;
+                                      jsonStr.userLevel = json.data.audienceVo.level;
+                                      jsonStr.nobleName = json.data.audienceVo.nlString!=undefined ? json.data.audienceVo.nlString : "未知";
+                                      jsonStr.userId = uid;
+                                      jsonStr.preNobleName = nobleName;
+                                      jsonStr.beginTime = beginTM;
+                                      giftList.push(jsonStr);
+                                      ++j;                                    
+                                  }else{
+                                      ++j;
+                                  }
                                   if(j==giftArray.length){
                                       giftList = giftList.concat(giftArray);
+                                      console.info(giftList);
                                       $("#device").gridalicious('append', makeboxes());
-                                      return;
                                   }
                                   getUserInfoBojiang(giftArray[j].userId, giftArray[j].preNobleName, giftArray[j].beginTime);
                               }).catch(err => {
                                   console.error('REQUEST ERROR', err);
                               })                            
                       }
-                      getUserInfoBojiang(giftArray[j].userId, giftArray[j].preNobleName, giftArray[j].beginTime);                       
+                      getUserInfoBojiang(giftArray[j].userId, giftArray[j].preNobleName, giftArray[j].beginTime);
                   }
               }
           });         
