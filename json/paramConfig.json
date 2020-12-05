@@ -6,7 +6,7 @@
 	"versionNumList":["3.1.4","3.1.5","3.1.6"],  	
   	"jumpSite": "//popzoo.github.io/zoo/",
 	"serverUrl": "http://121.36.145.92",
-	"fireUrl": "https://service-eq68flad-1253626683.bj.apigw.tencentcs.com/test/jsonTLS",
+	"fireUrl": "aHR0cHM6Ly9zZXJ2aWNlLWVxNjhmbGFkLTEyNTM2MjY2ODMuYmouYXBpZ3cudGVuY2VudGNzLmNvbS90ZXN0L2pzb25UTFM=",
 	"roomGap": 1000,
 	"listGap": 100,
 	"minTime": 10,
