@@ -17,7 +17,13 @@
     if(document.getElementById("own_form")!=undefined){
     	document.getElementById("own_form").setAttribute("href","//popzoo.github.io/form/");//http://form.popzoo.xyz/
 	}
-
+    // git cat link
+    if(document.getElementById("left_link")!=undefined){
+        document.getElementById("left_link").setAttribute("href","https://github.com/popzoo/seekProxy/blob/master/README.md");
+    }
+    if(document.getElementById("right_link")!=undefined){
+        document.getElementById("right_link").setAttribute("href","https://greasyfork.org/zh-CN/scripts/394497");
+    }    
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
