@@ -22,7 +22,7 @@
         document.getElementById("left_link").setAttribute("href","https://github.com/popzoo/seekProxy/blob/master/README.md");
     }
     if(document.getElementById("right_link")!=undefined){
-        document.getElementById("right_link").setAttribute("href","//popzoo.github.io/zoo/personal.html");
+        document.getElementById("right_link").setAttribute("href","https://www.obrua.com/");
     }   
      //====================================================== 
     var OriginTitile = document.title, titleTime;
