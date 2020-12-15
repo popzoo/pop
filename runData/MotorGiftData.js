@@ -8,6 +8,7 @@
 // @icon         https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico
 // @icon64URL    https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon-64.ico
 // @match        *://msg.douyu.com/666
+// @connect      webconf.douyucdn.cn
 // @mail         lvlanxing@gmail.com
 // @copyright    GPL-2.0
 // @run-at       document-end
@@ -63,7 +64,8 @@
                     let result = response.responseText;
                     result = result.substring(17, result.length-2);
                     let jsonData = JSON.parse(result);
-                    giftList = distinct(giftList.concat(jsonData));
+                    // console.info(jsonData.data);
+                    giftList = distinct(giftList.concat(jsonData.data));
                 }catch(err){//avoid json parse error
                     console.error("无法解析礼物模板【"+code+"】信息或不存在！");
                 }
