@@ -22,7 +22,7 @@
         document.getElementById("left_link").setAttribute("href","https://github.com/popzoo/seekProxy/blob/master/README.md");
     }
     if(document.getElementById("right_link")!=undefined){
-        document.getElementById("right_link").setAttribute("href","https://www.obrua.com/");
+        document.getElementById("right_link").setAttribute("href","https://bojianger.com/");
     }
     //====================================================== 
     window.addEventListener('load', () => {
