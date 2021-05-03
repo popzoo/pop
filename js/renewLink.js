@@ -42,79 +42,53 @@
             font-size: 2em;');
     });    
     //  //====================================================== 
-    // var OriginTitile = document.title, titleTime;
-    // document.addEventListener('visibilitychange', function() {
-    //     if (document.hidden) {
-    //         document.title = '道友请留步(￢_￢)瞄~';
-    //         clearTimeout(titleTime);
-    //     } else {
-    //         document.title = '欢迎回家✿(。◕ᴗ◕。)✿';
-    //         titleTime = setTimeout(function() {
-    //             document.title = OriginTitile;
-    //         },3000);
-    //     }
-    // });
-    // //====================================================== 
-    // const live2d_path = "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
-    // // const live2d_path = "https://cdn.jsdelivr.net/gh/lvlanxingapp/live2d-widget/";
-    // localStorage.setItem('modelId',5);
-    // localStorage.setItem('modelTexturesId',0);
-    // // 封装异步加载资源的方法
-    // function loadExternalResource(url, type) {
-    //     return new Promise((resolve, reject) => {
-    //         let tag;
-    
-    //         if (type === "css") {
-    //             tag = document.createElement("link");
-    //             tag.rel = "stylesheet";
-    //             tag.href = url;
-    //         }
-    //         else if (type === "js") {
-    //             tag = document.createElement("script");
-    //             tag.src = url;
-    //         }
-    //         if (tag) {
-    //             tag.onload = () => resolve(url);
-    //             tag.onerror = () => reject(url);
-    //             document.head.appendChild(tag);
-    //         }
-    //     });
-    // }
-    // // 加载 waifu.css live2d.min.js waifu-tips.js
-    // if (screen.width >= 768) {
-    //     Promise.all([
-    //         loadExternalResource(live2d_path + "waifu.css", "css"),
-    //         loadExternalResource(live2d_path + "live2d.min.js", "js"),
-    //         loadExternalResource(live2d_path + "waifu-tips.js", "js")
-    //     ]).then(() => {
-    //         initWidget({
-    //             waifuPath: live2d_path + "waifu-tips.json",
-    //             // apiPath: "https://live2d.fghrsh.net/api/",
-    //             // cdnPath: "https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/"
-    //             cdnPath: "https://cdn.jsdelivr.net/gh/popsee/live2d_api/"
-    //         });
-    //     });
-    // }
-    // initWidget 第一个参数为 waifu-tips.json 的路径，第二个参数为 API 地址
-    // API 后端可自行搭建，参考 https://github.com/fghrsh/live2d_api
-    // 初始化看板娘会自动加载指定目录下的 waifu-tips.json
-    // console.log(`
-    //   く__,.ヘヽ.        /  ,ー､ 〉
-    //            ＼ ', !-─‐-i  /  /´
-    //            ／｀ｰ'       L/／｀ヽ､
-    //          /   ／,   /|   ,   ,       ',
-    //        ｲ   / /-‐/  ｉ  L_ ﾊ ヽ!   i
-    //         ﾚ ﾍ 7ｲ｀ﾄ   ﾚ'ｧ-ﾄ､!ハ|   |
-    //           !,/7 '0'     ´0iソ|    |
-    //           |.从"    _     ,,,, / |./    |
-    //           ﾚ'| i＞.､,,__  _,.イ /   .i   |
-    //             ﾚ'| | / k_７_/ﾚ'ヽ,  ﾊ.  |
-    //               | |/i 〈|/   i  ,.ﾍ |  i  |
-    //              .|/ /  ｉ：    ﾍ!    ＼  |
-    //               kヽ>､ﾊ    _,.ﾍ､    /､!
-    //               !'〈//｀Ｔ´', ＼ ｀'7'ｰr'
-    //               ﾚ'ヽL__|___i,___,ンﾚ|ノ
-    //                   ﾄ-,/  |___./
-    //                   'ｰ'    !_,.:
-    // `);    
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '道友请留步(￢_￢)瞄~';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回家✿(。◕ᴗ◕。)✿';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },3000);
+        }
+    });
+    //====================================================== 
+    // 初始化看板娘，PC端显示，手机端隐藏 未优化（貌似自带） 
+    function loadExternalResource(url, type) {
+        return new Promise((resolve, reject) => {
+            let tag;
+            if (type === "css") {
+                tag = document.createElement("link");
+                tag.rel = "stylesheet";
+                tag.href = url;
+            }
+            else if (type === "js") {
+                tag = document.createElement("script");
+                tag.src = url;
+            }
+            if (tag) {
+                tag.onload = () => resolve(url);
+                tag.onerror = () => reject(url);
+                document.head.appendChild(tag);
+            }
+        });
+    }
+    // 加载 waifu.css live2d.min.js waifu-tips.js
+    const live2d_path = "https://cdn.jsdelivr.net/gh/popsee/live2d-all/";
+    // const live2d_path = "/live2d-widget/";// 注意：live2d_path 参数应使用绝对路径 
+    if (screen.width >= 768) {
+        Promise.all([
+            loadExternalResource("https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css", "css"),//图标加载
+            loadExternalResource(live2d_path + "waifu.css", "css"),
+            loadExternalResource(live2d_path + "live2d.min.js", "js"),
+            loadExternalResource(live2d_path + "waifu-tips.js", "js")
+        ]).then(() => {
+            initWidget({
+                waifuPath: live2d_path + "waifu-tips.json",
+                cdnPath: live2d_path
+            });
+        });
+    }    
 })();
