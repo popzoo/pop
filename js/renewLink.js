@@ -28,10 +28,10 @@
     }    
     // github link
     if(document.getElementById("left_link")!=undefined){
-        document.getElementById("left_link").setAttribute("href","https://www.obrua.com/");
+        document.getElementById("left_link").setAttribute("href","https://ghproxy.com/");
     }
     if(document.getElementById("right_link")!=undefined){
-        document.getElementById("right_link").setAttribute("href","https://github.com/popzoo");
+        document.getElementById("right_link").setAttribute("href","https://github.com/ripienaar/free-for-dev");
     }
     // document.getElementById("status_open").setAttribute("href",serverUrl+"/setstatus?status=1&nickName=admin");
     // document.getElementById("status_close").setAttribute("href",serverUrl+"/setstatus?status=0&nickName=admin");
@@ -45,10 +45,10 @@
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '道友请留步(￢_￢)瞄~';
+            document.title = '道友请留步😢';
             clearTimeout(titleTime);
         } else {
-            document.title = '欢迎回家✿(。◕ᴗ◕。)✿';
+            document.title = '带小主回家😘';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },3000);
