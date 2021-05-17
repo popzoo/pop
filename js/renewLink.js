@@ -45,10 +45,10 @@
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '道友请留步😢';
+            document.title = '道友请留步⊂⊙•⊙⊃';
             clearTimeout(titleTime);
         } else {
-            document.title = '带小主回家😘';
+            document.title = '带小主回家*◐ᴗ◑*';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },3000);
@@ -75,10 +75,8 @@
             }
         });
     }
-    // 加载 waifu.css live2d.min.js waifu-tips.js
     const live2d_path = "https://cdn.jsdelivr.net/gh/popsee/live2d-all/";
-    // const live2d_path = "/live2d-widget/";// 注意：live2d_path 参数应使用绝对路径 
-    if (screen.width >= 768) {
+    if (screen.width >= 768 || window.location.href.indexOf('bi')>-1) {//手机窄屏不显示live2d
         Promise.all([
             loadExternalResource("https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css", "css"),//图标加载
             loadExternalResource(live2d_path + "waifu.css", "css"),
