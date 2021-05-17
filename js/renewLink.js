@@ -1,8 +1,7 @@
 (function (){
     // CNZZ statistic
-    // var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    // document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    // 
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278051049'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278051049' type='text/javascript'%3E%3C/script%3E"));
+    
     let serverUrl = document.location.protocol+'//'+document.domain;
 
     if(document.getElementById("own_time")!=undefined){
@@ -48,7 +47,7 @@
             document.title = '道友请留步⊂⊙•⊙⊃';
             clearTimeout(titleTime);
         } else {
-            document.title = '带小主回家*◐ᴗ◑*';
+            document.title = '带小主回家┗(^_^)┛';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },3000);
