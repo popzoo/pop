@@ -1,9 +1,8 @@
 (function (){
     // CNZZ statistic
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278051049'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278051049' type='text/javascript'%3E%3C/script%3E"));
+    document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1278051049'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278051049' type='text/javascript'%3E%3C/script%3E"));
     
     let serverUrl = document.location.protocol+'//'+document.domain;
-
     if(document.getElementById("own_time")!=undefined){
 		document.getElementById("own_time").setAttribute("href",serverUrl+"/time.html");//popzoo.github.io/zoo/
 	}
