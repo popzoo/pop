@@ -23,6 +23,9 @@
 	}
     if(document.getElementById("own_data")!=undefined){
         document.getElementById("own_data").setAttribute("href",serverUrl+"/bi.html");//popzoo.github.io/form/
+    }
+    if(document.getElementById("own_audio")!=undefined){
+        document.getElementById("own_audio").setAttribute("href",serverUrl+"/audio.html");
     }    
     // github link
     if(document.getElementById("left_link")!=undefined){
