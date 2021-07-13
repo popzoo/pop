@@ -27,9 +27,9 @@
     if(document.getElementById("own_audio")!=undefined){
         document.getElementById("own_audio").setAttribute("href",serverUrl+"/audio.html");
     }
-    if(document.getElementById("own_cfip")!=undefined){
-        document.getElementById("own_cfip").setAttribute("href",serverUrl+"/cfip.html");
-    }          
+    // if(document.getElementById("own_cfip")!=undefined){
+    //     document.getElementById("own_cfip").setAttribute("href",serverUrl+"/cfip.html");
+    // }          
     // github link
     if(document.getElementById("left_link")!=undefined){
         document.getElementById("left_link").setAttribute("href","https://ghproxy.com/");
